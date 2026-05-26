@@ -1,0 +1,23 @@
+# Thư mục phụ thuộc (Dependencies)
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+.venv/
+
+# File cấu hình môi trường bảo mật (Chứa API Keys cá nhân)
+backend/.env
+.env
+
+# Thư mục biên dịch (Production Build)
+dist/
+frontend/dist/
+
+# Bộ nhớ đệm dữ liệu học tập RAG tự động tạo ra
+backend/data/philosophy_chunks.json
+
+# Cấu hình IDE cá nhân và file rác của hệ điều hành
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

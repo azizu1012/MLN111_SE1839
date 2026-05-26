@@ -1,0 +1,390 @@
+{
+  "hero": {
+    "subTitle": "TRIẾT HỌC MÁC - LÊNIN",
+    "titleLine1": "HỌC THUYẾT",
+    "titleLine2": "HÌNH THÁI",
+    "titleLine3": "KT-XH",
+    "description": "Một chuyên trang học tập rút gọn về học thuyết hình thái kinh tế - xã hội: lấy giáo trình Triết học Mác - Lênin làm nguồn chuẩn, giữ phạm vi đúng phần học thuyết hình thái kinh tế - xã hội để người học nắm chắc khái niệm, cấu trúc và quy luật vận động của xã hội.",
+    "quoteTitle": "TRỤC NỘI DUNG",
+    "quoteContent": "Học thuyết hình thái kinh tế - xã hội vạch ra những quy luật cơ bản của sự vận động, phát triển xã hội và là phương pháp luận khoa học để nhận thức, cải tạo xã hội.",
+    "quoteAction": "Vào lộ trình học →"
+  },
+  "definitionBar": {
+    "label": "Phạm trù trung tâm",
+    "title": "HÌNH THÁI KT-XH",
+    "content": "Hình thái kinh tế - xã hội là phạm trù cơ bản của chủ nghĩa duy vật lịch sử, dùng để chỉ xã hội ở một nấc thang lịch sử nhất định, với một kiểu quan hệ sản xuất đặc trưng phù hợp với trình độ nhất định của lực lượng sản xuất và một kiến trúc thượng tầng tương ứng."
+  },
+  "learningSections": [
+    {
+      "id": "khai-niem",
+      "menuTitle": "Khái niệm",
+      "eyebrow": "01 / Phạm trù cơ bản",
+      "title": "Khái niệm hình thái kinh tế - xã hội",
+      "lead": "Trên lập trường duy vật lịch sử, xã hội không được xem như một tập hợp hiện tượng rời rạc mà là một chỉnh thể có cấu trúc, vận động theo những quy luật khách quan.",
+      "sourceNote": "Nội dung được chuẩn hóa theo phần I - Học thuyết hình thái kinh tế - xã hội trong Giáo trình Triết học Mác - Lênin, giới hạn trong phạm vi chuyên đề học thuyết hình thái kinh tế - xã hội.",
+      "highlights": [
+        {
+          "label": "Đối tượng",
+          "value": "Xã hội ở từng nấc thang lịch sử cụ thể"
+        },
+        {
+          "label": "Hạt nhân",
+          "value": "Quan hệ sản xuất đặc trưng phù hợp lực lượng sản xuất"
+        },
+        {
+          "label": "Tầng tương ứng",
+          "value": "Kiến trúc thượng tầng được xây dựng trên cơ sở kinh tế ấy"
+        }
+      ],
+      "blocks": [
+        {
+          "title": "Cách hiểu cốt lõi",
+          "body": "Hình thái kinh tế - xã hội cho phép nhận thức xã hội như một chỉnh thể lịch sử cụ thể: có cơ sở kinh tế, có kiến trúc thượng tầng và có cơ chế vận động nội tại.",
+          "points": [
+            "Không đồng nhất xã hội với một hiện tượng đơn lẻ.",
+            "Không giải thích lịch sử chỉ bằng ý muốn chủ quan.",
+            "Nhấn mạnh nền tảng vật chất của đời sống xã hội."
+          ]
+        },
+        {
+          "title": "Ý nghĩa của phạm trù",
+          "body": "Phạm trù này giúp phân tích sự khác nhau giữa các xã hội trong lịch sử, đồng thời chỉ ra vì sao sự thay đổi của đời sống sản xuất có thể kéo theo biến đổi của toàn bộ đời sống xã hội.",
+          "points": [
+            "Nhận diện kết cấu xã hội trong từng thời kỳ.",
+            "Giải thích sự thay thế giữa các hình thái xã hội.",
+            "Tạo cơ sở phương pháp luận để nghiên cứu lịch sử."
+          ]
+        }
+      ],
+      "conceptMap": [
+        {
+          "term": "Lực lượng sản xuất",
+          "definition": "Mặt biểu hiện năng lực thực tiễn của con người trong quá trình sản xuất."
+        },
+        {
+          "term": "Quan hệ sản xuất",
+          "definition": "Quan hệ giữa người với người trong quá trình sản xuất xã hội."
+        },
+        {
+          "term": "Cơ sở hạ tầng",
+          "definition": "Toàn bộ quan hệ sản xuất hợp thành cơ cấu kinh tế hiện thực của xã hội."
+        },
+        {
+          "term": "Kiến trúc thượng tầng",
+          "definition": "Hệ thống quan điểm, thiết chế và quan hệ xã hội hình thành trên một cơ sở hạ tầng nhất định."
+        }
+      ],
+      "takeaway": "Muốn hiểu một xã hội trong lịch sử, cần nhìn vào kiểu quan hệ sản xuất đặc trưng, trình độ lực lượng sản xuất và kiến trúc thượng tầng tương ứng của xã hội đó."
+    },
+    {
+      "id": "he-thong-quan-diem",
+      "menuTitle": "Cấu trúc",
+      "eyebrow": "02 / Hệ thống quan điểm",
+      "title": "Cấu trúc lý luận của học thuyết",
+      "lead": "Học thuyết hình thái kinh tế - xã hội không chỉ đưa ra một định nghĩa, mà tạo thành hệ thống quan điểm về nền tảng, cấu trúc và quy luật phát triển của xã hội loài người.",
+      "sourceNote": "Phần giáo trình xác định học thuyết gồm các quan điểm cơ bản: sản xuất vật chất là nền tảng; biện chứng giữa lực lượng sản xuất và quan hệ sản xuất; biện chứng giữa cơ sở hạ tầng và kiến trúc thượng tầng; sự phát triển là quá trình lịch sử - tự nhiên.",
+      "highlights": [
+        {
+          "label": "Nền tảng",
+          "value": "Sản xuất vật chất"
+        },
+        {
+          "label": "Quy luật kinh tế",
+          "value": "Lực lượng sản xuất và quan hệ sản xuất"
+        },
+        {
+          "label": "Quy luật xã hội",
+          "value": "Cơ sở hạ tầng và kiến trúc thượng tầng"
+        }
+      ],
+      "blocks": [
+        {
+          "title": "Không phải một sơ đồ tĩnh",
+          "body": "Hình thái kinh tế - xã hội là một kết cấu sống động. Các mặt của nó tồn tại trong quan hệ tác động qua lại, trong đó sản xuất vật chất giữ vai trò nền tảng.",
+          "points": [
+            "Lực lượng sản xuất là yếu tố động, thường xuyên biến đổi.",
+            "Quan hệ sản xuất quy định địa vị và quan hệ của con người trong sản xuất.",
+            "Kiến trúc thượng tầng tác động trở lại cơ sở kinh tế."
+          ]
+        },
+        {
+          "title": "Cách học nhanh",
+          "body": "Có thể ghi nhớ học thuyết bằng trục: sản xuất vật chất → lực lượng sản xuất và quan hệ sản xuất → cơ sở hạ tầng → kiến trúc thượng tầng → tiến trình lịch sử - tự nhiên.",
+          "points": [
+            "Đi từ nền tảng vật chất lên đời sống chính trị - tinh thần.",
+            "Luôn đặt từng khái niệm trong quan hệ với chỉnh thể xã hội.",
+            "Không tách quy luật kinh tế khỏi vận động lịch sử."
+          ]
+        }
+      ],
+      "conceptMap": [
+        {
+          "term": "Nền tảng",
+          "definition": "Sản xuất vật chất bảo đảm tồn tại và phát triển xã hội."
+        },
+        {
+          "term": "Động lực sâu xa",
+          "definition": "Sự phát triển của lực lượng sản xuất làm nảy sinh yêu cầu biến đổi quan hệ sản xuất."
+        },
+        {
+          "term": "Kết cấu xã hội",
+          "definition": "Cơ sở hạ tầng và kiến trúc thượng tầng tạo thành chỉnh thể xã hội cụ thể."
+        },
+        {
+          "term": "Tiến trình",
+          "definition": "Sự thay thế các hình thái diễn ra theo quy luật khách quan của lịch sử."
+        }
+      ],
+      "takeaway": "Học thuyết cần được học như một hệ thống quan hệ, không phải một danh sách khái niệm rời rạc."
+    },
+    {
+      "id": "san-xuat-vat-chat",
+      "menuTitle": "Sản xuất",
+      "eyebrow": "03 / Nền tảng xã hội",
+      "title": "Sản xuất vật chất là cơ sở của xã hội",
+      "lead": "Để tồn tại và phát triển, con người phải sản xuất. Sản xuất vật chất tạo ra những điều kiện sinh hoạt thiết yếu và là cơ sở phát sinh, duy trì các hoạt động xã hội khác.",
+      "sourceNote": "Giáo trình nhấn mạnh sản xuất và tái sản xuất đời sống hiện thực là nhân tố quyết định trong quá trình lịch sử xét đến cùng.",
+      "highlights": [
+        {
+          "label": "Tính đặc trưng",
+          "value": "Hoạt động riêng có của con người và xã hội loài người"
+        },
+        {
+          "label": "Sản phẩm",
+          "value": "Giá trị vật chất và tinh thần phục vụ đời sống"
+        },
+        {
+          "label": "Vai trò",
+          "value": "Nền tảng của mọi quan hệ và hoạt động xã hội"
+        }
+      ],
+      "blocks": [
+        {
+          "title": "Vì sao sản xuất vật chất là cơ sở?",
+          "body": "Không có sản xuất vật chất, con người không có điều kiện sinh tồn; các lĩnh vực chính trị, pháp luật, đạo đức, khoa học, nghệ thuật cũng không thể tồn tại độc lập với đời sống hiện thực.",
+          "points": [
+            "Tạo ra tư liệu sinh hoạt cần thiết.",
+            "Tạo tiền đề cho các hoạt động xã hội khác.",
+            "Là điểm xuất phát để giải thích sự vận động lịch sử."
+          ]
+        },
+        {
+          "title": "Sản xuất xã hội là tái sản xuất đời sống",
+          "body": "Sản xuất trong xã hội không chỉ là làm ra vật phẩm, mà là quá trình tái sản xuất toàn bộ đời sống hiện thực, bao gồm điều kiện vật chất, quan hệ xã hội và con người xã hội.",
+          "points": [
+            "Sản xuất vật chất giữ vai trò nền tảng.",
+            "Sản xuất tinh thần làm phong phú đời sống ý thức.",
+            "Sản xuất ra bản thân con người duy trì và phát triển chủ thể xã hội."
+          ]
+        }
+      ],
+      "conceptMap": [
+        {
+          "term": "Sản xuất",
+          "definition": "Hoạt động sáng tạo ra giá trị nhằm đáp ứng nhu cầu tồn tại và phát triển."
+        },
+        {
+          "term": "Tái sản xuất",
+          "definition": "Quá trình duy trì, lặp lại và phát triển đời sống xã hội trong hiện thực."
+        },
+        {
+          "term": "Lao động",
+          "definition": "Hoạt động thực tiễn qua đó con người tác động vào tự nhiên và biến đổi chính mình."
+        },
+        {
+          "term": "Đời sống hiện thực",
+          "definition": "Tổng thể các điều kiện vật chất và quan hệ xã hội mà con người đang sống trong đó."
+        }
+      ],
+      "takeaway": "Khi phân tích lịch sử xã hội, phải xuất phát từ đời sống sản xuất vật chất chứ không bắt đầu từ những ý niệm tách rời hiện thực."
+    },
+    {
+      "id": "luc-luong-quan-he",
+      "menuTitle": "Quy luật",
+      "eyebrow": "04 / Quy luật kinh tế",
+      "title": "Biện chứng giữa lực lượng sản xuất và quan hệ sản xuất",
+      "lead": "Trong phương thức sản xuất, lực lượng sản xuất và quan hệ sản xuất thống nhất với nhau. Sự phù hợp hoặc không phù hợp giữa chúng là một quy luật cơ bản chi phối sự vận động của xã hội.",
+      "sourceNote": "Nội dung này thuộc hệ thống quan điểm cơ bản của học thuyết hình thái kinh tế - xã hội trong giáo trình chính.",
+      "highlights": [
+        {
+          "label": "Lực lượng sản xuất",
+          "value": "Năng lực thực tiễn, công cụ, người lao động và tri thức sản xuất"
+        },
+        {
+          "label": "Quan hệ sản xuất",
+          "value": "Quan hệ sở hữu, tổ chức quản lý và phân phối trong sản xuất"
+        },
+        {
+          "label": "Quy luật",
+          "value": "Quan hệ sản xuất phải phù hợp trình độ phát triển của lực lượng sản xuất"
+        }
+      ],
+      "blocks": [
+        {
+          "title": "Lực lượng sản xuất là mặt động",
+          "body": "Lực lượng sản xuất biểu hiện trình độ chinh phục tự nhiên của con người. Khi công cụ, kỹ thuật, tri thức và người lao động phát triển, chúng đặt ra yêu cầu mới đối với quan hệ sản xuất.",
+          "points": [
+            "Gắn với người lao động và tư liệu sản xuất.",
+            "Thể hiện năng lực thực tiễn của xã hội.",
+            "Có xu hướng biến đổi nhanh hơn quan hệ sản xuất."
+          ]
+        },
+        {
+          "title": "Quan hệ sản xuất phải được điều chỉnh",
+          "body": "Quan hệ sản xuất phù hợp sẽ tạo điều kiện cho lực lượng sản xuất phát triển; nếu trở nên lỗi thời, nó có thể kìm hãm sự phát triển và cần được cải biến.",
+          "points": [
+            "Phù hợp không có nghĩa là đồng nhất tuyệt đối.",
+            "Sự không phù hợp kéo dài tạo mâu thuẫn xã hội.",
+            "Cải biến quan hệ sản xuất là yêu cầu khách quan khi lực lượng sản xuất phát triển."
+          ]
+        }
+      ],
+      "conceptMap": [
+        {
+          "term": "Phương thức sản xuất",
+          "definition": "Sự thống nhất giữa lực lượng sản xuất và quan hệ sản xuất."
+        },
+        {
+          "term": "Phù hợp",
+          "definition": "Quan hệ sản xuất tạo không gian cho lực lượng sản xuất phát triển."
+        },
+        {
+          "term": "Mâu thuẫn",
+          "definition": "Trạng thái quan hệ sản xuất kìm hãm lực lượng sản xuất đã phát triển."
+        },
+        {
+          "term": "Cải biến",
+          "definition": "Quá trình thay đổi quan hệ sản xuất theo yêu cầu của thực tiễn sản xuất."
+        }
+      ],
+      "takeaway": "Muốn giải thích sự chuyển biến xã hội, cần nắm mối quan hệ giữa lực lượng sản xuất đang phát triển và quan hệ sản xuất đang tồn tại."
+    },
+    {
+      "id": "co-so-kien-truc",
+      "menuTitle": "Hạ tầng",
+      "eyebrow": "05 / Kết cấu xã hội",
+      "title": "Cơ sở hạ tầng và kiến trúc thượng tầng",
+      "lead": "Mỗi xã hội là một tổng thể quan hệ vật chất và tinh thần. Quan hệ giữa cơ sở hạ tầng và kiến trúc thượng tầng phản ánh sự tác động qua lại giữa đời sống kinh tế và đời sống chính trị - tinh thần.",
+      "sourceNote": "Giáo trình xác định đây là quy luật cơ bản tác động ở mọi hình thái kinh tế - xã hội trong lịch sử.",
+      "highlights": [
+        {
+          "label": "Cơ sở hạ tầng",
+          "value": "Toàn bộ quan hệ sản xuất hợp thành cơ cấu kinh tế xã hội"
+        },
+        {
+          "label": "Kiến trúc thượng tầng",
+          "value": "Quan điểm, thiết chế và quan hệ thượng tầng tương ứng"
+        },
+        {
+          "label": "Quan hệ",
+          "value": "Cơ sở hạ tầng quyết định, thượng tầng tác động trở lại"
+        }
+      ],
+      "blocks": [
+        {
+          "title": "Cơ sở hạ tầng quyết định kiến trúc thượng tầng",
+          "body": "Cơ cấu kinh tế của xã hội tạo ra nền tảng hiện thực trên đó hình thành các thiết chế chính trị, pháp luật, đạo đức, tôn giáo, nghệ thuật và các hình thái ý thức xã hội tương ứng.",
+          "points": [
+            "Quan hệ sản xuất thống trị giữ vai trò đặc trưng.",
+            "Quan hệ sản xuất tàn dư và mầm mống cùng tồn tại trong cơ cấu kinh tế.",
+            "Biến đổi kinh tế sâu sắc thường kéo theo biến đổi thượng tầng."
+          ]
+        },
+        {
+          "title": "Kiến trúc thượng tầng có tính độc lập tương đối",
+          "body": "Kiến trúc thượng tầng không thụ động. Nó có thể tác động mạnh mẽ trở lại cơ sở hạ tầng, thúc đẩy hoặc kìm hãm sự phát triển kinh tế - xã hội tùy theo tính chất và hướng tác động.",
+          "points": [
+            "Nhà nước, pháp luật, chính trị có vai trò đặc biệt quan trọng.",
+            "Tư tưởng xã hội ảnh hưởng đến hành động của các lực lượng xã hội.",
+            "Đổi mới thượng tầng cần phù hợp yêu cầu phát triển của cơ sở kinh tế."
+          ]
+        }
+      ],
+      "conceptMap": [
+        {
+          "term": "Quan hệ sản xuất thống trị",
+          "definition": "Quan hệ sản xuất đặc trưng cho cơ sở hạ tầng của một xã hội."
+        },
+        {
+          "term": "Thiết chế xã hội",
+          "definition": "Nhà nước, pháp luật, tổ chức chính trị - xã hội và các hình thức tổ chức tương ứng."
+        },
+        {
+          "term": "Ý thức xã hội",
+          "definition": "Các quan điểm chính trị, pháp quyền, đạo đức, tôn giáo, nghệ thuật, triết học."
+        },
+        {
+          "term": "Tác động trở lại",
+          "definition": "Khả năng của thượng tầng trong việc thúc đẩy hoặc kìm hãm cơ sở kinh tế."
+        }
+      ],
+      "takeaway": "Không thể hiểu đời sống chính trị - tinh thần nếu tách nó khỏi cơ sở kinh tế; cũng không được xem thượng tầng là hoàn toàn thụ động."
+    },
+    {
+      "id": "lich-su-y-nghia",
+      "menuTitle": "Ý nghĩa",
+      "eyebrow": "06 / Phương pháp luận",
+      "title": "Quá trình lịch sử - tự nhiên và ý nghĩa phương pháp luận",
+      "lead": "Sự phát triển các hình thái kinh tế - xã hội là quá trình lịch sử - tự nhiên: diễn ra trong hoạt động của con người nhưng chịu sự chi phối của những quy luật khách quan.",
+      "sourceNote": "Phần giáo trình nhấn mạnh giá trị khoa học và giá trị thời đại của học thuyết trong nhận thức, cải tạo xã hội và xác định con đường phát triển.",
+      "highlights": [
+        {
+          "label": "Tính lịch sử",
+          "value": "Mỗi hình thái tồn tại trong điều kiện và nấc thang phát triển nhất định"
+        },
+        {
+          "label": "Tính tự nhiên",
+          "value": "Sự vận động chịu quy luật khách quan, không tùy tiện"
+        },
+        {
+          "label": "Giá trị",
+          "value": "Cung cấp thế giới quan và phương pháp luận khoa học"
+        }
+      ],
+      "blocks": [
+        {
+          "title": "Không phải định mệnh cứng nhắc",
+          "body": "Quá trình lịch sử - tự nhiên không phủ nhận vai trò hoạt động của con người. Con người làm nên lịch sử, nhưng không làm trong những điều kiện tùy ý lựa chọn; hoạt động ấy phải tính đến quy luật khách quan.",
+          "points": [
+            "Chống cách nhìn duy ý chí về lịch sử.",
+            "Chống cách nhìn ngẫu nhiên, tách xã hội khỏi quy luật.",
+            "Nhấn mạnh vai trò nhận thức đúng quy luật để hành động hiệu quả."
+          ]
+        },
+        {
+          "title": "Ý nghĩa trong nhận thức và thực tiễn",
+          "body": "Học thuyết giúp phân tích xã hội từ nền tảng sản xuất vật chất, nhận diện mâu thuẫn cơ bản và xác định hướng cải tạo xã hội phù hợp điều kiện lịch sử cụ thể.",
+          "points": [
+            "Phân tích xã hội trong chỉnh thể kinh tế - chính trị - tinh thần.",
+            "Tôn trọng quy luật khách quan khi xây dựng đường lối phát triển.",
+            "Tránh sao chép máy móc hoặc nóng vội đốt cháy giai đoạn."
+          ]
+        }
+      ],
+      "conceptMap": [
+        {
+          "term": "Lịch sử - tự nhiên",
+          "definition": "Tiến trình xã hội có tính lịch sử cụ thể và vận động theo quy luật khách quan."
+        },
+        {
+          "term": "Phương pháp luận",
+          "definition": "Cách tiếp cận khoa học để nhận thức, đánh giá và cải tạo xã hội."
+        },
+        {
+          "term": "Điều kiện cụ thể",
+          "definition": "Bối cảnh lịch sử, trình độ sản xuất và quan hệ xã hội hiện thực."
+        },
+        {
+          "term": "Vận dụng sáng tạo",
+          "definition": "Áp dụng nguyên lý vào thực tiễn mà không giáo điều, máy móc."
+        }
+      ],
+      "takeaway": "Giá trị lớn nhất của học thuyết là cung cấp phương pháp nhìn xã hội từ cơ sở hiện thực, tôn trọng quy luật khách quan và vận dụng sáng tạo vào điều kiện cụ thể."
+    }
+  ],
+  "footer": {
+    "label": "Nguồn chuẩn hóa",
+    "title": "GIÁO TRÌNH TRIẾT HỌC MÁC - LÊNIN",
+    "content": "Nội dung hiển thị được biên tập theo phạm vi học thuyết hình thái kinh tế - xã hội, lấy giáo trình chính làm nguồn khái niệm và hệ thống thuật ngữ."
+  }
+}
