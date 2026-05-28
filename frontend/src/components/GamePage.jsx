@@ -1095,8 +1095,6 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
               backgroundImage: `url(${coinResult === 'good' ? currentChoiceData.good.image : currentChoiceData.bad.image})` 
             }}
           >
-            <div className="screen-darken" />
-            
             {/* Badge telling result */}
             <span 
               className={`outcome-badge ${coinResult}`} 
