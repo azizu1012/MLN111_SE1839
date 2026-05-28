@@ -18,6 +18,10 @@ backend/data/philosophy_chunks.json
 # Cấu hình IDE cá nhân và file rác của hệ điều hành
 .vscode/
 .idea/
+.claude/
 .DS_Store
 Thumbs.db
 *.log
+
+# File chứa API key dạng text
+env.txt

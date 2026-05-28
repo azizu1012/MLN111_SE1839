@@ -1533,73 +1533,101 @@
     </div>
   </footer>
 
-  <!-- GAME MODAL -->
-  <div class="modal-overlay" id="gameModal">
-    <div class="modal-content">
+  <!-- GAME MODAL - Chapter-based adventure game -->
+  <style>
+    .game-chapter-btn { cursor: pointer; border: 2px solid var(--primary-black); padding: 18px; text-align: left; background: var(--bg-white); transition: all 0.3s ease; display: flex; flex-direction: column; gap: 8px; }
+    .game-chapter-btn:hover:not(.locked) { border-color: var(--primary-red); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(168,0,0,0.15); }
+    .game-chapter-btn.locked { opacity: 0.5; cursor: not-allowed; filter: grayscale(80%); }
+    .game-chapter-badge { font-family: var(--font-heading); font-size: 0.75rem; font-weight: 800; color: var(--primary-red); text-transform: uppercase; letter-spacing: 1.5px; }
+    .game-chapter-title { font-family: var(--font-heading); font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+    .game-chapter-desc { font-size: 0.8rem; color: var(--text-grey); }
+    .game-screen { display: none; flex-direction: column; width: 100%; }
+    .game-screen.active { display: flex; }
+    .game-img-bg { width: 100%; aspect-ratio: 16/9; background-size: cover; background-position: center; border: 2px solid var(--primary-black); position: relative; overflow: hidden; }
+
+    .game-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%); z-index: 1; }
+
+    .game-bottom-panel { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(246,243,236,0.92); border-top: 2px solid var(--primary-black); padding: 10px 16px; z-index: 2; }
+
+    .game-choice-grid { position: absolute; bottom: 0; left: 0; right: 0; height: 33.33%; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0; z-index: 3; }
+    .game-choice-btn { border: none; background: transparent; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px; position: relative; font-family: var(--font-heading); }
+    .game-choice-btn .choice-label, .game-choice-btn .choice-title { display: none; }
+    .game-choice-btn:hover { background: rgba(168,0,0,0.15); box-shadow: inset 0 0 20px rgba(168,0,0,0.1); }
+    .game-choice-btn:hover .choice-label { display: flex; }
+    .game-choice-btn:hover .choice-title { display: block; }
+    .choice-label { font-size: 1.2rem; font-weight: 900; background: rgba(168,0,0,0.3); border: 2px solid rgba(255,255,255,0.5); width: 36px; height: 36px; border-radius: 4px; align-items: center; justify-content: center; color: #fff; text-shadow: 0 2px 6px rgba(0,0,0,0.7); }
+    .choice-title { font-size: 0.75rem; color: #fff; font-weight: 700; text-shadow: 0 2px 6px rgba(0,0,0,0.7); }
+
+    .game-coin { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto; border: 3px solid var(--primary-black); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 900; font-family: var(--font-heading); animation: coinSpin 1.6s ease-in-out forwards; }
+    @keyframes coinSpin { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(720deg); } }
+    .game-coin.good { background: radial-gradient(circle at 35% 35%, #fff, #10b981); color: #065f46; }
+    .game-coin.bad { background: radial-gradient(circle at 35% 35%, #fff, #dc2626); color: #7f1d1d; }
+
+    .game-result-badge { position: absolute; top: 10px; left: 10px; z-index: 5; font-family: var(--font-heading); font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border: 2px solid var(--primary-black); color: #fff; }
+    .game-result-badge.good { background: rgba(16,185,129,0.9); }
+    .game-result-badge.bad { background: rgba(220,38,38,0.9); }
+
+    .game-result-label { background: rgba(246,243,236,0.92); border: 2px solid var(--primary-black); padding: 6px 12px; font-size: 0.8rem; font-weight: 700; font-family: var(--font-heading); }
+    .game-result-label.good { color: #10b981; border-left: 4px solid #10b981; }
+    .game-result-label.bad { color: #dc2626; border-left: 4px solid #dc2626; }
+
+    .game-coin-result { position: absolute; top: 10px; right: 10px; z-index: 5; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 900; font-family: var(--font-heading); border: 2px solid var(--primary-black); }
+    .game-coin-result.good { background: radial-gradient(circle at 35% 35%, #fff, #10b981); color: #065f46; }
+    .game-coin-result.bad { background: radial-gradient(circle at 35% 35%, #fff, #dc2626); color: #7f1d1d; }
+  </style>
+
+  <div class="modal-overlay" id="gameModal" style="z-index: 1000;">
+    <div class="modal-content" style="max-width: 1100px; padding: 25px;">
       <button class="modal-close-btn" onclick="closeGameModal()">×</button>
+      <h2 class="modal-title" style="font-size:1.4rem;">GAME TƯƠNG TÁC: <span class="red">LỊCH SỬ</span></h2>
 
-      <h2 class="modal-title">
-        HỌC TẬP TƯƠNG TÁC: <span class="red">GAME</span>
-      </h2>
-
-      <p style="font-size: 0.9rem; color: #666666; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
-        Đang ôn tập phần: <strong id="gameSectionLabel">Bài học mở đầu</strong>
-      </p>
-
-      <div id="gameQuizScreen" style="display: flex; flex-direction: column; gap: 20px;">
-        <!-- Question 1 -->
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <h4 style="font-family: var(--font-heading); font-size: 1rem; color: var(--primary-black);">
-            Câu 1: Nhân tố nào là cơ sở quyết định sự tồn tại và phát triển của xã hội?
-          </h4>
-          <div style="display: flex; flex-direction: column; gap: 8px;">
-            <button class="quiz-opt-btn" onclick="selectAnswer(1, 'A')" id="q1optA"
-              style="text-align: left; padding: 12px 15px; border: 1px solid #ccc; background: white; cursor: pointer;">A.
-              Sản xuất vật chất</button>
-            <button class="quiz-opt-btn" onclick="selectAnswer(1, 'B')" id="q1optB"
-              style="text-align: left; padding: 12px 15px; border: 1px solid #ccc; background: white; cursor: pointer;">B.
-              Sản xuất tinh thần</button>
-            <button class="quiz-opt-btn" onclick="selectAnswer(1, 'C')" id="q1optC"
-              style="text-align: left; padding: 12px 15px; border: 1px solid #ccc; background: white; cursor: pointer;">C.
-              Sản xuất ra bản thân con người</button>
-          </div>
-        </div>
-
-        <!-- Question 2 -->
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <h4 style="font-family: var(--font-heading); font-size: 1rem; color: var(--primary-black);">
-            Câu 2: Tiến trình phát triển của các hình thái kinh tế - xã hội là tiến trình gì?
-          </h4>
-          <div style="display: flex; flex-direction: column; gap: 8px;">
-            <button class="quiz-opt-btn" onclick="selectAnswer(2, 'A')" id="q2optA"
-              style="text-align: left; padding: 12px 15px; border: 1px solid #ccc; background: white; cursor: pointer;">A.
-              Tiến trình ngẫu nhiên</button>
-            <button class="quiz-opt-btn" onclick="selectAnswer(2, 'B')" id="q2optB"
-              style="text-align: left; padding: 12px 15px; border: 1px solid #ccc; background: white; cursor: pointer;">B.
-              Tiến trình lịch sử - tự nhiên</button>
-            <button class="quiz-opt-btn" onclick="selectAnswer(2, 'C')" id="q2optC"
-              style="text-align: left; padding: 12px 15px; border: 1px solid #ccc; background: white; cursor: pointer;">C.
-              Tiến trình thần thánh sắp đặt</button>
-          </div>
-        </div>
-
-        <button class="tab-btn red" onclick="submitQuiz()" style="margin-top: 10px; align-self: center;">NỘP BÀI & XEM
-          ĐIỂM</button>
+      <!-- Screen 0: Chapter Select -->
+      <div class="game-screen active" id="gmSelect" style="gap:12px;">
+        <p style="font-size:0.85rem;color:var(--text-grey);">Chọn chương để trải nghiệm:</p>
+        <div id="gmChapterList" style="display:flex;flex-direction:column;gap:8px;"></div>
+        <button class="tab-btn outline" onclick="closeGameModal()" style="align-self:center;font-size:0.85rem;padding:8px 24px;">ĐÓNG</button>
       </div>
 
-      <div id="gameScoreScreen"
-        style="display: none; text-align: center; flex-direction: column; gap: 20px; padding: 20px 0;">
-        <div id="quizScoreDisplay"
-          style="font-size: 4rem; color: var(--primary-red); font-family: var(--font-heading); font-weight: 900;">
-          0 / 100
+      <!-- Screen 1: Intro -->
+      <div class="game-screen" id="gmIntro" style="gap:0;">
+        <div class="game-img-bg" id="gmIntroImg" style="border-bottom:none;">
+          <div class="game-overlay"></div>
+          <div class="game-bottom-panel" style="text-align:center;">
+            <h3 id="gmIntroTitle" style="font-family:var(--font-heading);font-size:1rem;color:var(--primary-red);margin:0;"></h3>
+            <p id="gmIntroDesc" style="font-size:0.8rem;color:var(--text-grey);margin:4px 0 8px;"></p>
+            <button class="tab-btn red" onclick="gmStartChoice()" style="font-size:0.85rem;padding:8px 20px;">BẮT ĐẦU</button>
+          </div>
         </div>
-        <h3 id="quizMessage" style="font-family: var(--font-heading); fontSize: 1.4rem;">🎉 Xuất sắc!</h3>
-        <p id="quizTip">Hãy nhấp vào tab "GIFT" tại bất kỳ phần nào trên trang chủ để mở khóa quà tặng Sơ đồ tư duy học
-          tập!</p>
+      </div>
 
-        <div style="display: flex; gap: 15px; justify-content: center; margin-top: 10px;">
-          <button class="tab-btn outline" onclick="resetQuiz()">LÀM LẠI</button>
-          <button class="tab-btn red" onclick="closeGameModal()">ĐÓNG</button>
+      <!-- Screen 2: Choice (2x2 Grid) -->
+      <div class="game-screen" id="gmChoice" style="gap:0;">
+        <div class="game-img-bg" id="gmChoiceImg">
+          <div class="game-choice-grid" id="gmChoiceGrid"></div>
+        </div>
+      </div>
+
+      <!-- Screen 3: Suspense -->
+      <div class="game-screen" id="gmSuspense" style="gap:0;">
+        <div style="text-align:center;padding:40px 20px;">
+          <div class="game-coin" id="gmCoin">★</div>
+          <h3 style="font-family:var(--font-heading);margin:16px 0 6px;font-size:1.1rem;">ĐỊNH MỆNH ĐANG ĐƯỢC QUYẾT ĐỊNH...</h3>
+          <p id="gmSuspenseText" style="color:var(--text-grey);font-style:italic;font-size:0.85rem;"></p>
+          <p style="font-size:0.8rem;color:#888;margin-top:10px;" id="gmSuspenseChoice"></p>
+        </div>
+      </div>
+
+      <!-- Screen 4: Result -->
+      <div class="game-screen" id="gmResult" style="gap:8px;">
+        <div class="game-img-bg" id="gmResultImg">
+          <span class="game-result-badge" id="gmResultBadge"></span>
+          <div class="game-coin-result" id="gmResultCoin">★</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+          <div class="game-result-label" id="gmResultEffect"></div>
+          <button class="tab-btn outline" onclick="gmChooseAnother()" style="font-size:0.8rem;padding:6px 14px;">CHỌN LẠI</button>
+          <button class="tab-btn outline" onclick="gmResetGame()" style="font-size:0.8rem;padding:6px 14px;">CHƯƠNG</button>
+          <button class="tab-btn red" id="gmNextBtn" style="display:none;font-size:0.8rem;padding:6px 14px;" onclick="gmNextChapter()">KẾ TIẾP &rarr;</button>
         </div>
       </div>
     </div>
@@ -1840,17 +1868,196 @@
     let answers = { 1: null, 2: null };
     let hasPassed = false;
 
-    // Modals control
+    // ===== CHAPTER GAME DATA =====
+    const IMG_BASE = 'frontend/public/game/';
+    const gameChapters = {
+      1: {
+        id: 1, title: "Chương 1: Thời điểm đầu xã hội chưa hình thành",
+        subtitle: "Thời kỳ Nguyên thủy - Bầy người nguyên thủy",
+        desc: "Bạn là Tù trưởng của một bộ tộc nguyên thủy. Công cụ lao động còn thô sơ. Mọi quyết định của bạn sẽ định hình số phận bộ tộc.",
+        images: { title: IMG_BASE+"chapter1_title.jpg", options: IMG_BASE+"chapter1_options.jpg" },
+        choices: {
+          A: { title: "Săn bắn", good: { title: "Săn Bắn Thành Công!", effect: "Lương thực dồi dào (+20 Sinh Tồn)", img: IMG_BASE+"chapter1_good.jpg" }, bad: { title: "Tai Họa Mammoth!", effect: "Thiệt hại người và của (-20 Sinh Tồn)", img: IMG_BASE+"chapter1_bad.jpg" } },
+          B: { title: "Hái lượm an toàn", good: { title: "Hái Lượm Thành Công!", effect: "Thu hoạch dồi dào (+15 Sinh Tồn)", img: IMG_BASE+"chapter1_b_good.jpg" }, bad: { title: "Mùa Vụ Thất Thu!", effect: "Lương thực thiếu hụt (-15 Sinh Tồn)", img: IMG_BASE+"chapter1_b_bad.jpg" } },
+          C: { title: "Chế tạo công cụ", singleOutcome: "good", good: { title: "Chế Tạo Thành Công!", effect: "Lực lượng sản xuất cải tiến (+25 Công Nghệ)", img: IMG_BASE+"chapter1_c_good.jpg" } },
+          D: { title: "Không làm gì cả", singleOutcome: "bad", bad: { title: "Bộ Tộc Diệt Vong!", effect: "Sản xuất đình trệ (-50 Sinh Tồn)", img: IMG_BASE+"chapter1_d_bad.jpg" } }
+        }
+      },
+      2: {
+        id: 2, title: "Chương 2: Xã hội bắt đầu hình thành",
+        subtitle: "Thời kỳ tan rã của Thị tộc",
+        desc: "Bạn là Hội trưởng Hội đồng Thị tộc. Xuất hiện tư hữu và tích lũy của cải. Hãy quyết định phân chia tài sản!",
+        images: { title: IMG_BASE+"chapter2_title.jpg", options: IMG_BASE+"chapter2_options.jpg" },
+        choices: {
+          A: { title: "Chia đều", good: { title: "Cộng Đồng Phát Triển!", effect: "Xã hội tương trợ bền vững (+20 Sinh Tồn)", img: IMG_BASE+"chapter2_good.jpg" }, bad: { title: "Thoái Hóa Lười Lao Động!", effect: "Ỷ lại phân phối cào bằng (-25 Sinh Tồn)", img: IMG_BASE+"chapter2_bad.jpg" } },
+          B: { title: "Ai làm nhiều hưởng nhiều", good: { title: "Động Lực Sản Xuất!", effect: "Kích thích tư hữu lành mạnh (+20 Năng Suất)", img: IMG_BASE+"chapter2_b_good.jpg" }, bad: { title: "Nổi Loạn Giàu Nghèo!", effect: "Mâu thuẫn xã hội (-15 Đoàn Kết)", img: IMG_BASE+"chapter2_b_bad.jpg" } },
+          C: { title: "Không làm gì cả", singleOutcome: "bad", bad: { title: "Mâu Thuẫn Xã Hội!", effect: "Kinh tế đình trệ (-30 Sinh Tồn)", img: IMG_BASE+"chapter2_c_bad.jpg" } },
+          D: { title: "Lấy hết về phần mình", good: { title: "Thiết Lập Độc Tài!", effect: "Hình thành giai cấp cai trị (+25 Tập Quyền)", img: IMG_BASE+"chapter2_d_good.jpg" }, bad: { title: "Đấu Tranh Lật Đổ!", effect: "Nhân dân đấu tranh (-35 Sinh Tồn)", img: IMG_BASE+"chapter2_d_bad.jpg" } }
+        }
+      },
+      3: {
+        id: 3, title: "Chương 3: Xã hội bắt đầu phát triển",
+        subtitle: "Thời kỳ phân hóa văn hóa",
+        desc: "Bạn là Tế tư / Học giả tối cao. Kinh tế đầy đủ, nhu cầu tinh thần bắt đầu phân hóa. Hãy kiến tạo văn minh!",
+        images: { title: IMG_BASE+"chapter3_title.jpg", options: IMG_BASE+"chapter3_options.jpg" },
+        choices: {
+          A: { title: "Phát triển tôn giáo, giáo dục", good: { title: "Văn Minh Khai Sáng!", effect: "Giáo dục lan rộng (+20 Văn Minh)", img: IMG_BASE+"chapter3_good.jpg" }, bad: { title: "Mâu Thuẫn Tôn Giáo!", effect: "Chia rẽ bộ tộc (-20 Đoàn Kết)", img: IMG_BASE+"chapter3_bad.jpg" } },
+          B: { title: "Phát triển văn hóa, nghệ thuật", good: { title: "Khai Sáng Nghệ Thuật!", effect: "Nâng cao đời sống tinh thần (+15 Văn Minh)", img: IMG_BASE+"chapter3_b_good.jpg" }, bad: { title: "Mơ Tưởng Hưởng Lạc!", effect: "Bỏ bê vật chất (-15 Sinh Tồn)", img: IMG_BASE+"chapter3_b_bad.jpg" } },
+          C: { title: "Phát triển khoa học", good: { title: "Khai Phá Kỹ Thuật!", effect: "Kinh tế đi lên (+25 Công Nghệ)", img: IMG_BASE+"chapter3_c_good.jpg" }, bad: { title: "Robot Nô Dịch!", effect: "Robot chiếm quyền thống trị (-25 Trí Thức)", img: IMG_BASE+"chapter3_c_bad.jpg" } },
+          D: { title: "Không làm gì cả", singleOutcome: "bad", bad: { title: "Xã Hội Sụp Đổ!", effect: "Ngừng sản xuất (-50 Sinh Tồn)", img: IMG_BASE+"chapter3_d_bad.jpg" } }
+        }
+      }
+    };
+
+    // Game State
+    let gmState = { chapter: 1, choice: null, result: null, history: [], unlocked: [1] };
+
+    function showScreen(id) {
+      document.querySelectorAll('.game-screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    // ===== MODALS =====
     function openGameModal(sectionName) {
-      document.getElementById('gameSectionLabel').innerText = sectionName;
       document.getElementById('gameModal').style.display = 'flex';
-      resetQuiz();
+      gmBuildChapterList();
+      showScreen('gmSelect');
     }
 
     function closeGameModal() {
       document.getElementById('gameModal').style.display = 'none';
     }
 
+    // ===== CHAPTER SELECT =====
+    function gmBuildChapterList() {
+      const list = document.getElementById('gmChapterList');
+      list.innerHTML = '';
+      Object.keys(gameChapters).forEach(key => {
+        const ch = gameChapters[key];
+        const unlocked = gmState.unlocked.includes(ch.id);
+        const div = document.createElement('div');
+        div.className = 'game-chapter-btn' + (unlocked ? '' : ' locked');
+        div.innerHTML = '<span class="game-chapter-badge">Chương ' + ch.id + '</span>' +
+          '<div class="game-chapter-title">' + ch.title + '</div>' +
+          '<div class="game-chapter-desc">' + (unlocked ? ch.subtitle : 'KHÓA - Hoàn thành chương trước') + '</div>';
+        if (unlocked) div.onclick = function() { gmStartChapter(ch.id); };
+        list.appendChild(div);
+      });
+    }
+
+    function gmStartChapter(id) {
+      gmState.chapter = id;
+      gmState.choice = null;
+      gmState.result = null;
+      const ch = gameChapters[id];
+      document.getElementById('gmIntroTitle').textContent = ch.title;
+      document.getElementById('gmIntroDesc').textContent = ch.desc;
+      document.getElementById('gmIntroImg').style.backgroundImage = 'url(' + ch.images.title + ')';
+      showScreen('gmIntro');
+    }
+
+    function gmStartChoice() {
+      const ch = gameChapters[gmState.chapter];
+      document.getElementById('gmChoiceImg').style.backgroundImage = 'url(' + ch.images.options + ')';
+      const grid = document.getElementById('gmChoiceGrid');
+      grid.innerHTML = '';
+      const labels = ['A', 'B', 'C', 'D'];
+      Object.keys(ch.choices).forEach((key, idx) => {
+        const c = ch.choices[key];
+        const btn = document.createElement('button');
+        btn.className = 'game-choice-btn';
+        btn.innerHTML = '<span class="choice-label">' + labels[idx] + '</span><span class="choice-title">' + c.title + '</span>';
+        btn.onclick = function() { gmMakeChoice(key); };
+        grid.appendChild(btn);
+      });
+      showScreen('gmChoice');
+    }
+
+    function gmMakeChoice(key) {
+      const ch = gameChapters[gmState.chapter];
+      const choice = ch.choices[key];
+      let result = 'good';
+      if (choice.singleOutcome) result = choice.singleOutcome;
+      else result = ['good','bad'][Math.floor(Math.random()*2)];
+
+      gmState.choice = key;
+      gmState.result = result;
+
+      // Show suspense
+      const suspenseMsgs = ["Gió tuyết gầm rú...", "Định mệnh xoay vần...", "Bộ tộc nín thở chờ kết quả...", "Lịch sử đang được viết..."];
+      let idx = 0;
+      document.getElementById('gmSuspenseText').textContent = suspenseMsgs[0];
+      document.getElementById('gmSuspenseChoice').innerHTML = 'Quyết định: <strong>"' + choice.title + '"</strong>';
+      document.getElementById('gmCoin').className = 'game-coin';
+      document.getElementById('gmCoin').textContent = '★';
+      showScreen('gmSuspense');
+
+      const interval = setInterval(function() {
+        idx = (idx + 1) % suspenseMsgs.length;
+        document.getElementById('gmSuspenseText').textContent = suspenseMsgs[idx];
+      }, 450);
+
+      setTimeout(function() {
+        clearInterval(interval);
+        gmShowResult(choice, result);
+      }, 1800);
+    }
+
+    function gmShowResult(choice, result) {
+      const outcome = result === 'good' ? choice.good : choice.bad;
+      if (!outcome) { gmResetGame(); return; }
+
+      document.getElementById('gmResultImg').style.backgroundImage = 'url(' + outcome.img + ')';
+      document.getElementById('gmResultBadge').textContent = (result === 'good' ? 'TOT' : 'XAU') + ' ★';
+      document.getElementById('gmResultBadge').className = 'game-result-badge ' + result;
+      document.getElementById('gmResultCoin').textContent = result === 'good' ? '★' : '●';
+      document.getElementById('gmResultCoin').className = 'game-coin-result ' + result;
+      document.getElementById('gmResultEffect').textContent = outcome.effect;
+      document.getElementById('gmResultEffect').className = 'game-result-label ' + result;
+
+      // Next chapter button
+      const nextBtn = document.getElementById('gmNextBtn');
+      const nextId = gmState.chapter + 1;
+      if (gameChapters[nextId]) {
+        nextBtn.style.display = 'inline-block';
+        nextBtn.onclick = function() {
+          if (!gmState.unlocked.includes(nextId)) {
+            gmState.unlocked.push(nextId);
+          }
+          gmStartChapter(nextId);
+        };
+      } else {
+        nextBtn.style.display = 'none';
+      }
+
+      // Save history
+      gmState.history.unshift({
+        chapter: 'Chương ' + gmState.chapter,
+        choice: choice.title,
+        result: result === 'good' ? 'Tốt' : 'Xấu'
+      });
+
+      showScreen('gmResult');
+    }
+
+    function gmChooseAnother() {
+      gmStartChoice();
+    }
+
+    function gmResetGame() {
+      gmBuildChapterList();
+      showScreen('gmSelect');
+    }
+
+    function gmNextChapter() {
+      const nextId = gmState.chapter + 1;
+      if (gameChapters[nextId]) {
+        if (!gmState.unlocked.includes(nextId)) gmState.unlocked.push(nextId);
+        gmStartChapter(nextId);
+      }
+    }
+
+    // ===== MODALS control (giữ nguyên Gift) =====
     function openGiftModal(sectionName) {
       document.getElementById('giftSectionLabel').innerText = sectionName;
       document.getElementById('giftModal').style.display = 'flex';
@@ -1858,40 +2065,26 @@
       const modalContent = document.getElementById('giftModalContent');
 
       if (hasPassed) {
-        // Unlocked state (shows 3D cube initially, hides collage mindmap)
         document.getElementById('giftLockedState').style.display = 'none';
         document.getElementById('giftCubeContainer').style.display = 'flex';
-
-        // Reset 3D Cube states
         document.getElementById('giftCube').classList.remove('exploded');
         document.getElementById('giftCollageCanvas').style.display = 'none';
         document.getElementById('giftCollageCanvas').classList.remove('visible');
-
-        // Reset Shockwave style
         const shockwave = document.getElementById('cubeShockwave');
         shockwave.style.animation = 'none';
-
-        // Standard width for cube screen
         modalContent.style.maxWidth = '600px';
         modalContent.style.backgroundColor = 'var(--bg-cream)';
         modalContent.style.padding = '40px';
-
-        // Show headers
         document.getElementById('giftModalTitle').style.display = 'block';
         document.getElementById('giftModalSub').style.display = 'block';
       } else {
-        // Locked state
         document.getElementById('giftLockedState').style.display = 'flex';
         document.getElementById('giftCubeContainer').style.display = 'none';
         document.getElementById('giftCollageCanvas').style.display = 'none';
         document.getElementById('giftCollageCanvas').classList.remove('visible');
-
-        // Standard width
         modalContent.style.maxWidth = '600px';
         modalContent.style.backgroundColor = 'var(--bg-cream)';
         modalContent.style.padding = '40px';
-
-        // Show headers
         document.getElementById('giftModalTitle').style.display = 'block';
         document.getElementById('giftModalSub').style.display = 'block';
       }
@@ -1905,187 +2098,74 @@
       const modalContent = document.getElementById('giftModalContent');
       const canvas = document.getElementById('giftCollageCanvas');
       const items = canvas.querySelectorAll('.collage-item, .collage-letter-box');
-
-      // 1. Reverse staggered collapse for collage items
       const totalItems = items.length;
       items.forEach((item, index) => {
         const originalTransform = item.getAttribute('data-original-transform') || item.style.transform || '';
-
-        if (!item.getAttribute('data-original-transform')) {
-          item.setAttribute('data-original-transform', originalTransform);
-        }
-
-        // Reverse stagger delay
-        setTimeout(() => {
+        if (!item.getAttribute('data-original-transform')) item.setAttribute('data-original-transform', originalTransform);
+        setTimeout(function() {
           item.style.transition = 'all 0.4s cubic-bezier(0.25, 1, 0.25, 1)';
           item.style.opacity = '0';
           const baseTransform = originalTransform.replace(/\s*scale\([^)]+\)/g, '');
-          item.style.transform = `${baseTransform} scale(0.6)`;
+          item.style.transform = baseTransform + ' scale(0.6)';
         }, (totalItems - 1 - index) * 15);
       });
-
-      // 2. Shrink canvas scale & fade it out
       canvas.style.transition = 'all 0.5s cubic-bezier(0.25, 1, 0.25, 1)';
       canvas.classList.remove('visible');
-
-      // 3. Morph modal wrapper and restore cube after the elements shrink
-      setTimeout(() => {
-        // Shrink modal content wrapper
+      setTimeout(function() {
         modalContent.style.maxWidth = '600px';
         modalContent.style.backgroundColor = 'var(--bg-cream)';
         modalContent.style.padding = '40px';
-
-        // Show headers
         document.getElementById('giftModalTitle').style.display = 'block';
         document.getElementById('giftModalSub').style.display = 'block';
-
-        // Show cube container and reset the cube explosion classes so it slides back
         document.getElementById('giftCubeContainer').style.display = 'flex';
-
-        // Wait a small moment to trigger the springy collapsing transition of faces
-        setTimeout(() => {
+        setTimeout(function() {
           document.getElementById('giftCube').classList.remove('exploded');
         }, 50);
-
-        // 4. Hide canvas completely after transition ends
-        setTimeout(() => {
+        setTimeout(function() {
           canvas.style.display = 'none';
         }, 500);
       }, 350);
     }
 
     function triggerCubeExplosion() {
-      // 1. Shockwave effect playing
       const shockwave = document.getElementById('cubeShockwave');
-
-      // Inject dynamic CSS keyframe if it doesn't exist
       if (!document.getElementById('shockwaveKeyframeStyle')) {
         const styleSheet = document.createElement("style");
         styleSheet.id = "shockwaveKeyframeStyle";
-        styleSheet.innerText = `@keyframes shockwaveExpand {
-          0% { width: 0px; height: 0px; opacity: 1; }
-          100% { width: 1200px; height: 1200px; opacity: 0; }
-        }`;
+        styleSheet.innerText = '@keyframes shockwaveExpand { 0% { width: 0px; height: 0px; opacity: 1; } 100% { width: 1200px; height: 1200px; opacity: 0; } }';
         document.head.appendChild(styleSheet);
       }
-
       shockwave.style.animation = 'none';
-      void shockwave.offsetWidth; // trigger reflow
+      void shockwave.offsetWidth;
       shockwave.style.animation = 'shockwaveExpand 0.8s cubic-bezier(0.1, 0.8, 0.3, 1) forwards';
-
-      // 2. Explode the cube faces
       document.getElementById('giftCube').classList.add('exploded');
-
-      // 3. Smooth morph modal content to grow & fade-in collage mindmap
-      setTimeout(() => {
+      setTimeout(function() {
         const modalContent = document.getElementById('giftModalContent');
-
-        // Animate modal wrapper properties
         modalContent.style.maxWidth = '950px';
         modalContent.style.backgroundColor = '#E5E2D9';
         modalContent.style.padding = '25px';
-
-        // Hide overlay titles to let mindmap take full space
         document.getElementById('giftModalTitle').style.display = 'none';
         document.getElementById('giftModalSub').style.display = 'none';
-
-        // Hide cube container completely
         document.getElementById('giftCubeContainer').style.display = 'none';
-
-        // Render collage mindmap beautifully
         const canvas = document.getElementById('giftCollageCanvas');
         canvas.style.display = 'block';
-
-        // Trigger smooth fade-in
-        setTimeout(() => {
+        setTimeout(function() {
           canvas.classList.add('visible');
-
-          // Micro-interaction: staggered entry for collage floating items
           const items = canvas.querySelectorAll('.collage-item, .collage-letter-box');
-          items.forEach((item, index) => {
-            if (!item.getAttribute('data-original-transform')) {
-              item.setAttribute('data-original-transform', item.style.transform || '');
-            }
+          items.forEach(function(item, index) {
+            if (!item.getAttribute('data-original-transform')) item.setAttribute('data-original-transform', item.style.transform || '');
             const originalTransform = item.getAttribute('data-original-transform');
-
             item.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.15)';
             item.style.opacity = '0';
             const baseTransform = originalTransform.replace(/\s*scale\([^)]+\)/g, '');
-            item.style.transform = `${baseTransform} scale(0.6)`;
-
-            setTimeout(() => {
+            item.style.transform = baseTransform + ' scale(0.6)';
+            setTimeout(function() {
               item.style.opacity = '1';
               item.style.transform = originalTransform;
             }, 50 + index * 30);
           });
         }, 50);
       }, 550);
-    }
-
-
-    // Quiz logic
-    function selectAnswer(qId, choice) {
-      answers[qId] = choice;
-
-      // Clear previous styles for this question
-      const opts = ['A', 'B', 'C'];
-      opts.forEach(opt => {
-        const btn = document.getElementById(`q${qId}opt${opt}`);
-        if (btn) {
-          btn.style.border = '1px solid #ccc';
-          btn.style.backgroundColor = 'white';
-        }
-      });
-
-      // Highlight selected
-      const selectedBtn = document.getElementById(`q${qId}opt${choice}`);
-      if (selectedBtn) {
-        selectedBtn.style.border = '2px solid var(--primary-red)';
-        selectedBtn.style.backgroundColor = '#fff5f5';
-      }
-    }
-
-    function submitQuiz() {
-      if (answers[1] === null || answers[2] === null) {
-        alert('Vui lòng chọn đầy đủ đáp án cho tất cả câu hỏi!');
-        return;
-      }
-
-      let score = 0;
-      if (answers[1] === 'A') score += 50; // A. Sản xuất vật chất is correct
-      if (answers[2] === 'B') score += 50; // B. Tiến trình lịch sử - tự nhiên is correct
-
-      document.getElementById('quizScoreDisplay').innerText = score + ' / 100';
-
-      if (score === 100) {
-        hasPassed = true;
-        document.getElementById('quizMessage').innerText = '🎉 Xuất sắc! Bạn đã thông hiểu bài học!';
-        document.getElementById('quizTip').innerText = 'Hãy nhấp vào tab "GIFT" tại bất kỳ phần nào trên trang chủ để nhận quà tặng Sơ đồ tư duy học tập!';
-      } else {
-        document.getElementById('quizMessage').innerText = '📚 Hãy cố gắng ôn tập kỹ hơn nhé!';
-        document.getElementById('quizTip').innerText = 'Bạn cần trả lời chính xác cả 2 câu hỏi (đạt 100 điểm) để mở khóa quà tặng học tập.';
-      }
-
-      document.getElementById('gameQuizScreen').style.display = 'none';
-      document.getElementById('gameScoreScreen').style.display = 'flex';
-    }
-
-    function resetQuiz() {
-      answers = { 1: null, 2: null };
-
-      const opts = ['A', 'B', 'C'];
-      [1, 2].forEach(qId => {
-        opts.forEach(opt => {
-          const btn = document.getElementById(`q${qId}opt${opt}`);
-          if (btn) {
-            btn.style.border = '1px solid #ccc';
-            btn.style.backgroundColor = 'white';
-          }
-        });
-      });
-
-      document.getElementById('gameQuizScreen').style.display = 'flex';
-      document.getElementById('gameScoreScreen').style.display = 'none';
     }
 
     // ----------------------------------------------------
@@ -2135,7 +2215,7 @@
         let aiText = '';
         if (isClientKeyConfigured) {
           // Direct Client-Side call (useful for quick static testing or local filesystem use)
-          const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+          const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent?key=${GEMINI_API_KEY}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

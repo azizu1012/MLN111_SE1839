@@ -379,48 +379,43 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           max-width: 1100px;
           margin: 0 auto;
           padding: 10px 20px 30px;
-          font-family: 'Outfit', 'Inter', sans-serif;
-          color: #ffffff;
+          font-family: var(--font-body);
+          color: var(--text-dark);
         }
 
-        /* Top Header Info */
         .game-top-bar {
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin-bottom: 15px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: var(--bg-cream);
+          border: 2px solid var(--primary-black);
           padding: 12px 20px;
-          border-radius: 8px;
         }
 
         .game-top-title {
           font-size: 0.95rem;
           font-weight: 500;
-          color: #aaaaaa;
+          color: var(--text-grey);
           letter-spacing: 0.5px;
         }
 
         .game-top-title strong {
-          color: #ffffff;
+          color: var(--text-dark);
         }
 
-        /* Responsive 16:9 Game Console Board */
         .game-console-canvas {
           position: relative;
           width: 100%;
           aspect-ratio: 16 / 9;
-          background-color: #0d0d0d;
-          border-radius: 12px;
+          background-color: var(--bg-white);
           overflow: hidden;
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15), 0 0 0 2px var(--primary-black);
           background-size: cover;
           background-position: center;
           transition: all 0.3s ease;
         }
 
-        /* Screens Layout */
         .console-screen {
           position: absolute;
           inset: 0;
@@ -431,17 +426,15 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           background-position: center;
         }
 
-        /* Visual Dim Overlay */
         .screen-darken {
           position: absolute;
           inset: 0;
-          background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+          background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
           z-index: 1;
         }
 
-        /* ================= CHAPTER SELECT SCREEN ================= */
         .chapter-select-screen {
-          background: linear-gradient(135deg, #121212 0%, #080808 100%);
+          background: var(--bg-cream);
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -459,13 +452,14 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           font-size: 1.8rem;
           font-weight: 800;
           margin: 0 0 8px 0;
-          color: #ffffff;
+          color: var(--primary-black);
           letter-spacing: 1px;
+          font-family: var(--font-heading);
         }
 
         .chapter-select-header p {
           font-size: 0.9rem;
-          color: #888888;
+          color: var(--text-grey);
           margin: 0;
         }
 
@@ -480,9 +474,8 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
         .chapter-card-btn {
           flex: 1;
           max-width: 360px;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 8px;
+          background: var(--bg-white);
+          border: 2px solid var(--primary-black);
           padding: 25px;
           text-align: left;
           cursor: pointer;
@@ -495,56 +488,49 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
         }
 
         .chapter-card-btn:hover:not(.locked) {
-          background: rgba(255, 56, 56, 0.05);
-          border-color: #ff3838;
+          background: var(--bg-cream);
+          border-color: var(--primary-red);
           transform: translateY(-5px);
-          box-shadow: 0 10px 25px rgba(255, 56, 56, 0.25);
+          box-shadow: 0 10px 25px rgba(168, 0, 0, 0.15);
         }
 
         .chapter-card-btn.locked {
-          opacity: 0.55;
-          filter: grayscale(85%) contrast(90%);
+          opacity: 0.5;
+          filter: grayscale(80%);
           cursor: not-allowed;
-          background: rgba(255, 255, 255, 0.01);
-          border-color: rgba(255, 255, 255, 0.05);
+          border-color: var(--border-grey);
         }
 
         .chapter-card-btn.locked:hover {
-          background: rgba(255, 255, 255, 0.01);
-          border-color: rgba(255, 255, 255, 0.05);
           transform: none;
           box-shadow: none;
-        }
-
-        .chapter-card-btn.locked .chapter-card-badge {
-          color: #777777;
-        }
-
-        .chapter-card-btn.locked .chapter-card-footer {
-          color: #777777;
+          background: var(--bg-white);
+          border-color: var(--border-grey);
         }
 
         .chapter-card-badge {
           font-size: 0.75rem;
           font-weight: 800;
-          color: #ff3838;
+          color: var(--primary-red);
           text-transform: uppercase;
           letter-spacing: 2px;
           margin-bottom: 8px;
           display: block;
+          font-family: var(--font-heading);
         }
 
         .chapter-card-title {
           font-size: 1.15rem;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--text-dark);
           margin: 0 0 8px 0;
           line-height: 1.3;
+          font-family: var(--font-heading);
         }
 
         .chapter-card-desc {
           font-size: 0.8rem;
-          color: #888888;
+          color: var(--text-grey);
           line-height: 1.4;
           margin: 0;
           display: -webkit-box;
@@ -557,30 +543,28 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           margin-top: 15px;
           font-size: 0.8rem;
           font-weight: 700;
-          color: #ffcc00;
+          color: var(--primary-red);
           text-transform: uppercase;
           display: flex;
           align-items: center;
           gap: 6px;
+          font-family: var(--font-heading);
         }
 
-        /* ================= INTRO SCREEN OVERLAYS ================= */
         .intro-overlay-panel {
           position: absolute;
           bottom: 8%;
           left: 5%;
           right: 5%;
           z-index: 2;
-          background: rgba(0, 0, 0, 0.75);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          background: var(--bg-white);
+          border: 2px solid var(--primary-black);
           padding: 20px 25px;
-          border-radius: 8px;
           display: flex;
           justify-content: space-between;
           align-items: center;
           gap: 20px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
           animation: slideUp 0.5s ease-out;
         }
 
@@ -595,137 +579,103 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
 
         .intro-text-block h3 {
           font-size: 1.15rem;
-          color: #ff3838;
+          color: var(--primary-red);
           font-weight: 700;
           margin: 0 0 6px 0;
           letter-spacing: 1px;
           text-transform: uppercase;
+          font-family: var(--font-heading);
         }
 
         .intro-text-block p {
           font-size: 0.85rem;
-          color: #cccccc;
+          color: var(--text-grey);
           line-height: 1.4;
           margin: 0;
         }
 
         .btn-console {
-          background: #ff3838;
-          color: #ffffff;
-          border: none;
-          font-family: 'Outfit', sans-serif;
+          background: var(--primary-red);
+          color: #fff;
+          border: 2px solid var(--primary-black);
+          font-family: var(--font-heading);
           font-weight: 700;
           font-size: 0.95rem;
           padding: 12px 24px;
-          border-radius: 4px;
           cursor: pointer;
           transition: all 0.2s ease;
-          box-shadow: 0 4px 15px rgba(255, 56, 56, 0.4);
+          box-shadow: 0 4px 15px rgba(168, 0, 0, 0.3);
           white-space: nowrap;
         }
 
         .btn-console:hover {
-          background: #e02424;
+          background: var(--hover-red);
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(255, 56, 56, 0.6);
+          box-shadow: 0 6px 20px rgba(168, 0, 0, 0.4);
         }
 
-        /* ================= CHOICE HOTSPOTS OVERLAYS ================= */
-        .hotspot-button {
+        .choice-grid {
           position: absolute;
-          z-index: 10;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 33.33%;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+          gap: 0;
+          z-index: 3;
+        }
+        .choice-grid-btn {
+          border: none;
           background: transparent;
-          border: 1px dashed rgba(255, 255, 255, 0.15);
-          border-radius: 6px;
           cursor: pointer;
-          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.2s ease;
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
+          gap: 2px;
+          padding: 4px;
+          position: relative;
+          font-family: var(--font-heading);
+        }
+        .choice-grid-btn .choice-grid-label,
+        .choice-grid-btn .choice-grid-title {
+          display: none;
+        }
+        .choice-grid-btn:hover {
+          background: rgba(168,0,0,0.15);
+          box-shadow: inset 0 0 20px rgba(168,0,0,0.1);
+        }
+        .choice-grid-btn:hover .choice-grid-label {
+          display: flex;
+        }
+        .choice-grid-btn:hover .choice-grid-title {
+          display: block;
+        }
+        .choice-grid-label {
+          font-size: 1.2rem;
+          font-weight: 900;
+          background: rgba(168,0,0,0.3);
+          border: 2px solid rgba(255,255,255,0.5);
+          width: 36px;
+          height: 36px;
+          border-radius: 4px;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+        }
+        .choice-grid-title {
+          font-size: 0.75rem;
+          color: #fff;
+          font-weight: 700;
+          text-shadow: 0 2px 6px rgba(0,0,0,0.7);
         }
 
-        .hotspot-glow {
-          position: absolute;
-          inset: 0;
-          border-radius: 6px;
-          border: 2px solid transparent;
-          pointer-events: none;
-          transition: all 0.2s ease;
-        }
-
-        .hotspot-button:hover {
-          background: rgba(255, 56, 56, 0.08);
-          border-color: rgba(255, 56, 56, 0.6);
-          transform: scale(1.03);
-          box-shadow: 0 0 20px rgba(255, 56, 56, 0.4);
-        }
-
-        .hotspot-button:hover .hotspot-glow {
-          border-color: #ff3838;
-          animation: pulseBorder 1s infinite alternate;
-        }
-
-        @keyframes pulseBorder {
-          0% { box-shadow: inset 0 0 5px rgba(255,56,56,0.3); }
-          100% { box-shadow: inset 0 0 15px rgba(255,56,56,0.6); }
-        }
-
-        /* Hotspot positioning exactly matching image text */
-        .hotspot-A {
-          top: 67%;
-          left: 7%;
-          width: 17%;
-          height: 10%;
-        }
-
-        .hotspot-C {
-          top: 81%;
-          left: 7%;
-          width: 28%;
-          height: 10%;
-        }
-
-        .hotspot-B {
-          top: 67%;
-          left: 64%;
-          width: 28%;
-          height: 10%;
-        }
-
-        .hotspot-D {
-          top: 81%;
-          left: 64%;
-          width: 29%;
-          height: 10%;
-        }
-
-        .hotspot-guide-tip {
-          position: absolute;
-          top: 4%;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 2;
-          background: rgba(0, 0, 0, 0.8);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          padding: 8px 16px;
-          border-radius: 20px;
-          font-size: 0.85rem;
-          font-weight: 600;
-          color: #ffcc00;
-          letter-spacing: 0.5px;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-          animation: pulseTip 1.5s infinite alternate;
-          pointer-events: none;
-        }
-
-        @keyframes pulseTip {
-          0% { transform: translate(-50%, 0) scale(0.95); opacity: 0.8; }
-          100% { transform: translate(-50%, 0) scale(1.05); opacity: 1; }
-        }
-
-        /* ================= SUSPENSE SCREEN ================= */
         .suspense-screen {
-          background-color: #070707;
+          background: var(--bg-cream);
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -734,44 +684,75 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           padding: 20px;
         }
 
-        .suspense-ritual-box {
+        .coin-flip-container {
           position: relative;
-          width: 90px;
-          height: 90px;
+          width: 100px;
+          height: 100px;
           margin-bottom: 20px;
         }
 
-        .ritual-orb {
-          position: absolute;
-          inset: 15px;
+        .coin {
+          width: 90px;
+          height: 90px;
           border-radius: 50%;
-          background: radial-gradient(circle, #ff3838 0%, #7f0000 100%);
-          box-shadow: 0 0 25px rgba(255, 56, 56, 0.7);
-          animation: pulseOrb 1s infinite alternate;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          margin-left: -45px;
+          margin-top: -45px;
+          transform-style: preserve-3d;
+          border: 2px solid var(--primary-black);
         }
 
-        .ritual-ring {
+        .coin.flipping {
+          animation: coinFlip 1.6s ease-in-out forwards;
+        }
+
+        .coin.good {
+          background: radial-gradient(circle at 35% 35%, #fff, #10b981);
+          border-color: #10b981;
+          box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .coin.bad {
+          background: radial-gradient(circle at 35% 35%, #fff, #dc2626);
+          border-color: #dc2626;
+          box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+        }
+
+        .coin-face {
           position: absolute;
           inset: 0;
-          border: 2px dashed rgba(255, 255, 255, 0.15);
           border-radius: 50%;
-          animation: spinInfinite 10s linear infinite;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 2rem;
+          font-weight: 900;
+          backface-visibility: hidden;
+          font-family: var(--font-heading);
         }
 
-        .ritual-ring-outer {
-          position: absolute;
-          inset: -10px;
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 50%;
+        .coin-face.front {
+          background: var(--bg-cream);
+          border: 3px solid var(--primary-black);
+          color: var(--primary-red);
         }
 
-        @keyframes pulseOrb {
-          0% { transform: scale(0.85); box-shadow: 0 0 15px rgba(255, 56, 56, 0.5); }
-          100% { transform: scale(1.05); box-shadow: 0 0 35px rgba(255, 56, 56, 0.9); }
+        .coin-face.back {
+          background: var(--bg-cream);
+          border: 3px solid var(--primary-black);
+          color: var(--primary-red);
+          transform: rotateY(180deg);
         }
 
-        @keyframes spinInfinite {
-          100% { transform: rotate(360deg); }
+        @keyframes coinFlip {
+          0% { transform: rotateY(0deg) scale(1); }
+          20% { transform: rotateY(180deg) scale(1.1); }
+          40% { transform: rotateY(360deg) scale(0.95); }
+          60% { transform: rotateY(540deg) scale(1.05); }
+          80% { transform: rotateY(720deg) scale(0.98); }
+          100% { transform: rotateY(720deg) scale(1); }
         }
 
         .suspense-caption-title {
@@ -780,25 +761,25 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           letter-spacing: 2px;
           margin-bottom: 10px;
           text-transform: uppercase;
-          color: #ffffff;
+          color: var(--primary-black);
+          font-family: var(--font-heading);
         }
 
         .suspense-caption-body {
           font-size: 0.95rem;
-          color: #ffb8b8;
+          color: var(--text-grey);
           font-style: italic;
           height: 25px;
         }
 
-        /* ================= RESULT SCREEN OVERLAYS ================= */
         .novel-textbox {
           position: absolute;
           bottom: 0;
           left: 0;
           right: 0;
           z-index: 2;
-          background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 80%, rgba(0, 0, 0, 0.6) 100%);
-          border-top: 1px solid rgba(255, 255, 255, 0.12);
+          background: var(--bg-white);
+          border-top: 3px solid var(--primary-black);
           padding: 22px 30px;
           display: flex;
           flex-direction: column;
@@ -811,40 +792,20 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           align-items: center;
         }
 
-        .novel-badge {
-          font-size: 0.75rem;
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          padding: 4px 10px;
-          border-radius: 3px;
-        }
-
-        .novel-badge.good {
-          background: rgba(16, 185, 129, 0.2);
-          color: #10b981;
-          border: 1px solid rgba(16, 185, 129, 0.4);
-        }
-
-        .novel-badge.bad {
-          background: rgba(239, 68, 68, 0.2);
-          color: #ef4444;
-          border: 1px solid rgba(239, 68, 68, 0.4);
-        }
-
         .novel-textbox-title {
           font-size: 1.2rem;
           font-weight: 800;
           margin: 0;
+          font-family: var(--font-heading);
         }
 
-        .novel-textbox-title.good { color: #34d399; }
-        .novel-textbox-title.bad { color: #f87171; }
+        .novel-textbox-title.good { color: #10b981; }
+        .novel-textbox-title.bad { color: #dc2626; }
 
         .novel-textbox-desc {
           font-size: 0.92rem;
           line-height: 1.5;
-          color: #e2e8f0;
+          color: var(--text-grey);
           margin: 0;
         }
 
@@ -852,22 +813,22 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           font-size: 0.8rem;
           font-weight: 600;
           padding: 8px 12px;
-          background: rgba(255,255,255,0.03);
-          border-radius: 4px;
+          background: var(--bg-cream);
           align-self: flex-start;
           display: inline-flex;
           align-items: center;
           gap: 6px;
+          border: 1px solid var(--border-grey);
         }
 
         .novel-textbox-effect.good {
           color: #10b981;
-          border-left: 3px solid #10b981;
+          border-left: 4px solid #10b981;
         }
 
         .novel-textbox-effect.bad {
-          color: #ef4444;
-          border-left: 3px solid #ef4444;
+          color: #dc2626;
+          border-left: 4px solid #dc2626;
         }
 
         .novel-floating-actions {
@@ -880,32 +841,29 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
         }
 
         .btn-novel-small {
-          background: rgba(0, 0, 0, 0.8);
-          border: 1px solid rgba(255,255,255,0.25);
-          color: #ffffff;
+          background: var(--bg-white);
+          border: 2px solid var(--primary-black);
+          color: var(--text-dark);
           padding: 8px 16px;
           font-size: 0.8rem;
           font-weight: 700;
-          border-radius: 4px;
           cursor: pointer;
           transition: all 0.2s ease;
-          font-family: 'Outfit', sans-serif;
-          backdrop-filter: blur(5px);
-          box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+          font-family: var(--font-heading);
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .btn-novel-small:hover {
-          background: #ff3838;
-          border-color: #ff3838;
+          background: var(--primary-red);
+          border-color: var(--primary-red);
+          color: #fff;
           transform: translateY(-1px);
         }
 
-        /* Info & Guide below board */
         .console-footer-instructions {
           margin-top: 20px;
-          background: rgba(18, 18, 18, 0.9);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 8px;
+          background: var(--bg-cream);
+          border: 2px solid var(--primary-black);
           padding: 15px 25px;
           display: flex;
           justify-content: space-between;
@@ -914,36 +872,35 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
 
         .btn-console-back {
           background: transparent;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: #aaaaaa;
+          border: 2px solid var(--primary-black);
+          color: var(--text-grey);
           padding: 8px 16px;
           font-size: 0.85rem;
           font-weight: 600;
-          border-radius: 4px;
           cursor: pointer;
           transition: all 0.2s ease;
+          font-family: var(--font-heading);
         }
 
         .btn-console-back:hover {
-          border-color: rgba(255,255,255,0.4);
-          color: #ffffff;
+          background: var(--primary-black);
+          color: var(--bg-cream);
         }
 
-        /* History Stack styling */
         .novel-history-box {
           margin-top: 20px;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 8px;
+          background: var(--bg-cream);
+          border: 2px solid var(--primary-black);
           padding: 15px 20px;
         }
 
         .novel-history-box h4 {
           font-size: 0.95rem;
           margin: 0 0 10px 0;
-          color: #888888;
+          color: var(--text-dark);
           text-transform: uppercase;
           letter-spacing: 0.5px;
+          font-family: var(--font-heading);
         }
 
         .history-mini-list {
@@ -957,15 +914,37 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           justify-content: space-between;
           font-size: 0.8rem;
           padding: 6px 10px;
-          background: rgba(255,255,255,0.01);
-          border-radius: 4px;
+          background: var(--bg-white);
+          border: 1px solid var(--border-grey);
+        }
+
+        .outcome-badge {
+          position: absolute;
+          z-index: 5;
+          font-family: var(--font-heading);
+          font-size: 0.75rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          padding: 6px 14px;
+          border: 2px solid var(--primary-black);
+        }
+
+        .outcome-badge.good {
+          background: rgba(16, 185, 129, 0.9);
+          color: #fff;
+        }
+
+        .outcome-badge.bad {
+          background: rgba(220, 38, 38, 0.9);
+          color: #fff;
         }
       `}</style>
 
       {/* Top Bar Status */}
       <div className="game-top-bar">
         <span className="game-top-title">
-          🎮 MÀN CHƠI TƯƠNG TÁC: {gameState !== 'chapter_select' ? <strong>{activeChapterData.title}</strong> : <strong>Bản Đồ Lịch Sử</strong>}
+          GAME TƯƠNG TÁC: {gameState !== 'chapter_select' ? <strong>{activeChapterData.title}</strong> : <strong>Bản Đồ Lịch Sử</strong>}
         </span>
         {gameState !== 'chapter_select' && (
           <button type="button" className="btn-console-back" onClick={resetGame}>
@@ -1011,7 +990,7 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
                   e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)';
                 }}
               >
-                🔄 Đặt Lại Tiến Trình (Khóa các Chương)
+                Đặt Lại Tiến Trình (Khóa các Chương)
               </button>
             </div>
             <div className="chapter-cards-grid">
@@ -1037,9 +1016,9 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
                     </div>
                     <div className="chapter-card-footer">
                       {isUnlocked ? (
-                        <>⚡ CHƠI NGAY &rarr;</>
+                        <>CHƠI NGAY &rarr;</>
                       ) : (
-                        <>🔒 KHÓA (Yêu cầu Chương {chap.id - 1})</>
+                        <>KHÓA (Yêu cầu Chương {chap.id - 1})</>
                       )}
                     </div>
                   </div>
@@ -1068,69 +1047,41 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           </div>
         )}
 
-        {/* ================= SCREEN 2: CHOICE SCREEN (HOTSPOTS) ================= */}
+        {/* ================= SCREEN 2: CHOICE SCREEN (2x2 GRID) ================= */}
         {gameState === 'choice' && activeChapterData && (
           <div 
             className="console-screen" 
             style={{ backgroundImage: `url(${activeChapterData.images.options})` }}
           >
-            {/* Click direction overlay */}
-            <div className="hotspot-guide-tip">
-              👈 ẤN TRỰC TIẾP VÀO PHƯƠNG ÁN TRÊN HÌNH ĐỂ QUYẾT ĐỊNH 👉
+            <div className="choice-grid">
+              {Object.keys(activeChapterData.choices).map((key, idx) => {
+                const label = ['A', 'B', 'C', 'D'][idx];
+                const c = activeChapterData.choices[key];
+                return (
+                  <button key={key} type="button" className="choice-grid-btn" onClick={() => handleSelectOption(key)}>
+                    <span className="choice-grid-label">{label}</span>
+                    <span className="choice-grid-title">{c.title}</span>
+                  </button>
+                );
+              })}
             </div>
-
-            {/* Absolute Hotspot overlays matching visual coordinates */}
-            <button 
-              type="button" 
-              className="hotspot-button hotspot-A"
-              onClick={() => handleSelectOption('A')}
-              title="Lựa chọn A"
-            >
-              <div className="hotspot-glow" />
-            </button>
-
-            <button 
-              type="button" 
-              className="hotspot-button hotspot-C"
-              onClick={() => handleSelectOption('C')}
-              title="Lựa chọn C"
-            >
-              <div className="hotspot-glow" />
-            </button>
-
-            <button 
-              type="button" 
-              className="hotspot-button hotspot-B"
-              onClick={() => handleSelectOption('B')}
-              title="Lựa chọn B"
-            >
-              <div className="hotspot-glow" />
-            </button>
-
-            <button 
-              type="button" 
-              className="hotspot-button hotspot-D"
-              onClick={() => handleSelectOption('D')}
-              title="Lựa chọn D"
-            >
-              <div className="hotspot-glow" />
-            </button>
           </div>
         )}
 
         {/* ================= SCREEN 3: SUSPENSE SCREEN ================= */}
         {gameState === 'suspense' && currentChoiceData && (
           <div className="console-screen suspense-screen">
-            <div className="suspense-ritual-box">
-              <div className="ritual-ring-outer" />
-              <div className="ritual-ring" />
-              <div className="ritual-orb" />
+            <div className="coin-flip-container">
+              <div className={`coin flipping`}>
+                <div className="coin-face front">★</div>
+                <div className="coin-face back">●</div>
+              </div>
             </div>
             
-            <div className="suspense-caption-title">Quyết định Vận Mệnh</div>
+            <div className="suspense-caption-title">ĐỊNH MỆNH ĐANG ĐƯỢC QUYẾT ĐỊNH...</div>
             <div className="suspense-caption-body">{suspenseText}</div>
             
-            <p style={{ marginTop: '20px', fontSize: '0.8rem', color: '#555555', maxWidth: '350px' }}>
+            <p style={{ marginTop: '20px', fontSize: '0.8rem', color: '#666666', maxWidth: '350px' }}>
               Quyết định <strong>"{currentChoiceData.title}"</strong> đang chịu tác động của quy luật tự nhiên và lịch sử...
             </p>
           </div>
@@ -1144,79 +1095,78 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
               backgroundImage: `url(${coinResult === 'good' ? currentChoiceData.good.image : currentChoiceData.bad.image})` 
             }}
           >
-            {/* Overlay a colored filter to match the vibe */}
-            <div 
-              className="screen-darken"
-              style={{ 
-                background: `linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)`,
-                backgroundColor: coinResult === 'good' ? currentChoiceData.good.overlay : currentChoiceData.bad.overlay 
-              }}
-            />
-
-            {/* floating visual novel control buttons (Top-Right) */}
-            <div className="novel-floating-actions">
-              <button type="button" className="btn-novel-small" onClick={chooseAnother}>
-                QUYẾT ĐỊNH KHÁC
-              </button>
-              <button type="button" className="btn-novel-small" onClick={resetGame}>
-                CHƠI LẠI
-              </button>
-              {chapters[currentChapter + 1] && (
-                <button 
-                  type="button" 
-                  className="btn-novel-small" 
-                  onClick={() => selectChapter(currentChapter + 1)}
-                  style={{
-                    background: '#ffcc00',
-                    color: '#000000',
-                    borderColor: '#ffcc00',
-                    fontWeight: '800',
-                    transition: 'all 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.background = '#e6b800';
-                    e.target.style.borderColor = '#e6b800';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.background = '#ffcc00';
-                    e.target.style.borderColor = '#ffcc00';
-                  }}
-                >
-                  QUA CHƯƠNG KẾ ➔
-                </button>
-              )}
-            </div>
-
             {/* Badge telling result */}
             <span 
               className={`outcome-badge ${coinResult}`} 
               style={{ top: '20px', left: '20px' }}
             >
-              {coinResult === 'good' ? '☀️ Kết Cục Tốt (Good)' : '⛈️ Kết Cục Xấu (Bad)'}
+              {coinResult === 'good' ? '★ KẾT CỤC TỐT' : '● KẾT CỤC XẤU'}
             </span>
 
-            {/* Subtitle / Description Textbox at bottom */}
-            <div className="novel-textbox">
-              <div className="novel-textbox-header">
-                <h3 className={`novel-textbox-title ${coinResult}`}>
-                  {coinResult === 'good' ? currentChoiceData.good.title : currentChoiceData.bad.title}
-                </h3>
-                <span style={{ fontSize: '0.75rem', color: '#666666', fontStyle: 'italic' }}>
-                  🪙 Lượt tung ẩn: {coinResult === 'good' ? 'MẶT TỐT (GOOD)' : 'MẶT XẤU (BAD)'}
-                </span>
+            {/* Coin result visual */}
+            <div style={{
+              position: 'absolute',
+              top: '28px',
+              left: '220px',
+              zIndex: 5,
+              width: '44px',
+              height: '44px',
+              borderRadius: '50%',
+              background: coinResult === 'good'
+                ? 'radial-gradient(circle at 35% 35%, #fff, #10b981)'
+                : 'radial-gradient(circle at 35% 35%, #fff, #dc2626)',
+              border: '2px solid var(--primary-black)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1.1rem',
+              fontWeight: '900',
+              color: coinResult === 'good' ? '#065f46' : '#7f1d1d',
+              fontFamily: 'var(--font-heading)',
+              boxShadow: '0 2px 10px rgba(0,0,0,0.3)'
+            }}>
+              {coinResult === 'good' ? '★' : '●'}
+            </div>
+          </div>
+        )}
+
+        {/* Result details below the image */}
+        {gameState === 'result' && currentChoiceData && coinResult && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '0 20px 20px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
+              <div className={`novel-textbox-effect ${coinResult}`} style={{ margin: 0 }}>
+                <span>⚖️ <strong>Ảnh hưởng:</strong> {coinResult === 'good' ? currentChoiceData.good.effect : currentChoiceData.bad.effect}</span>
               </div>
-
-              {/* Only show textbox description if there is NO baked text in the image */}
-              {!currentChoiceData.hasBakedText && (
-                <p className="novel-textbox-desc">
-                  {coinResult === 'good' ? currentChoiceData.good.text : currentChoiceData.bad.text}
-                </p>
-              )}
-
-              {/* Historical survival impact box */}
-              <div className={`novel-textbox-effect ${coinResult}`}>
-                <span>⚖️ <strong>Ảnh hưởng:</strong></span>
-                <span>{coinResult === 'good' ? currentChoiceData.good.effect : currentChoiceData.bad.effect}</span>
+              <div style={{ display: 'flex', gap: '6px', marginLeft: 'auto' }}>
+                <button type="button" className="btn-novel-small" onClick={chooseAnother}>
+                  CHỌN LẠI
+                </button>
+                <button type="button" className="btn-novel-small" onClick={resetGame}>
+                  CHƠI LẠI
+                </button>
+                {chapters[currentChapter + 1] && (
+                  <button 
+                    type="button" 
+                    className="btn-novel-small" 
+                    onClick={() => selectChapter(currentChapter + 1)}
+                    style={{
+                      background: 'var(--primary-red)',
+                      color: '#ffffff',
+                      borderColor: 'var(--primary-red)',
+                      fontWeight: '800'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.background = 'var(--hover-red)';
+                      e.target.style.borderColor = 'var(--hover-red)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.background = 'var(--primary-red)';
+                      e.target.style.borderColor = 'var(--primary-red)';
+                    }}
+                  >
+                    KẾ TIẾP &rarr;
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -1226,10 +1176,10 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
 
       {/* Info & History panel below the console board */}
       <div className="console-footer-instructions">
-        <span style={{ fontSize: '0.85rem', color: '#888888' }}>
-          💡 <em>Mẹo: Hoàn thành mỗi chương để tích lũy kinh nghiệm, mở khóa chương kế tiếp từ thời nguyên thủy đến hiện đại.</em>
+        <span style={{ fontSize: '0.85rem', color: '#666666' }}>
+          <em>Mẹo: Hoàn thành mỗi chương để mở khóa chương kế tiếp.</em>
         </span>
-        <button type="button" className="btn-console-back" onClick={resetGame} style={{ border: 'none', background: 'rgba(255,255,255,0.05)', color: '#ffffff' }}>
+        <button type="button" className="btn-console-back" onClick={resetGame}>
           Chọn chương chơi
         </button>
       </div>
@@ -1237,15 +1187,15 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
       {/* Decision play history list */}
       {history.length > 0 && (
         <div className="novel-history-box">
-          <h4>📜 Lịch sử các quyết định của bạn:</h4>
+          <h4>Lịch sử các quyết định của bạn:</h4>
           <div className="history-mini-list">
             {history.map((item, index) => (
               <div key={index} className="history-mini-item">
                 <span>
                   <strong>{item.chapter}</strong> - <strong>{item.choice}</strong> &rarr; <span style={{ color: '#aaaaaa' }}>{item.text}</span>
                 </span>
-                <span style={{ color: item.result === 'Tốt' ? '#10b981' : '#ef4444', fontWeight: '700' }}>
-                  {item.result === 'Tốt' ? '☀️ Tốt' : '⛈️ Xấu'}
+                <span style={{ color: item.result === 'Tốt' ? '#10b981' : '#dc2626', fontWeight: '700' }}>
+                  {item.result === 'Tốt' ? 'Tốt' : 'Xấu'}
                 </span>
               </div>
             ))}

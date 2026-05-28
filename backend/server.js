@@ -29,6 +29,13 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+const isProduction = process.env.NODE_ENV === 'production';
+const frontendDist = path.join(__dirname, '..', 'frontend', 'dist');
+
+if (isProduction) {
+  app.use(express.static(frontendDist));
+}
+
 // Load educational content
 const contentFilePath = path.join(__dirname, 'data', 'contentData.json');
 
@@ -171,21 +178,32 @@ Khi người học hỏi về bất kỳ khái niệm hoặc nội dung nào li�
 Hãy trình bày câu trả lời thật chuyên nghiệp, dễ học bằng cách sử dụng các thẻ HTML cơ bản (như <strong>, <em>, <br>, <ul>, <li>) để định dạng câu trả lời đẹp mắt trong chatbox.`;
 
     if (ragResults.length > 0) {
-      const context = ragResults.map((r, idx) => `[Tài liệu trích dẫn ${idx + 1}]:\n${r.text}`).join('\n\n');
+      const primaryChunks = ragResults.filter(r => r.priority === 'high');
+      const secondaryChunks = ragResults.filter(r => r.priority !== 'high');
+
+      let context = '';
+      if (primaryChunks.length > 0) {
+        context += primaryChunks.map((r, idx) => `[Tài liệu CHÍNH - Học thuyết hình thái KT-XH ${idx + 1}]:\n${r.text}`).join('\n\n');
+        context += '\n\n';
+      }
+      if (secondaryChunks.length > 0) {
+        context += secondaryChunks.map((r, idx) => `[Tài liệu THAM KHẢO - Giáo trình Triết học ${idx + 1}]:\n${r.text}`).join('\n\n');
+      }
+
       customInstruction += `\n\n[QUAN TRỌNG - SỬ DỤNG TÀI LIỆU CHÍNH THỨC DƯỚI ĐÂY ĐỂ TRẢ LỜI]:
-Dưới đây là phần trích dẫn trực tiếp từ Giáo trình Triết học Mác-Lênin chính thức. Hãy ƯU TIÊN sử dụng thông tin chuẩn xác này để trình bày phần Khái niệm và Từ khóa cốt lõi cho học viên:
+Dưới đây là phần trích dẫn từ giáo trình Triết học Mác-Lênin. Hãy ƯU TIÊN sử dụng thông tin từ [Tài liệu CHÍNH] để trình bày Khái niệm và Từ khóa cốt lõi cho học viên. Các [Tài liệu THAM KHẢO] có thể dùng để bổ sung thêm nếu cần.
 
 ${context}
 
-Lưu ý: Chỉ trích dẫn thông tin thực tế từ tài liệu trên để trả lời. Tránh giải thích dài dòng lan man.`;
-      console.log(`🤖 RAG Mode: Đã tìm thấy ngữ cảnh trong giáo trình. Bổ sung vào prompt để tối ưu tốc độ và độ chính xác.`);
+Lưu ý: Chỉ trích dẫn thông tin thực tế từ tài liệu trên. Tránh giải thích dài dòng lan man.`;
+      console.log(`RAG: Tìm thấy ngữ cảnh từ giáo trình tổng quát. Bổ sung để tham khảo.`);
     } else {
       customInstruction += "\n\nLưu ý: Nếu người học hỏi các câu hỏi giao tiếp chung, xã giao hoặc ngoài giáo trình, hãy trả lời tự nhiên, thân thiện và khéo léo hướng họ tập trung quay trở lại ôn tập môn Triết học.";
       console.log(`🤖 Free-chat Mode: Không tìm thấy ngữ cảnh giáo trình phù hợp. AI trả lời tự do.`);
     }
 
     // 3. Request Gemini API
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent?key=${apiKey}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -201,6 +219,16 @@ Lưu ý: Chỉ trích dẫn thông tin thực tế từ tài liệu trên để 
     });
 
     const data = await response.json();
+
+    if (!response.ok || !data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts || !data.candidates[0].content.parts[0]) {
+      console.error("Gemini API Error:", JSON.stringify(data));
+      return res.status(502).json({
+        success: false,
+        message: "Gemini API từ chối yêu cầu hoặc trả về kết quả không hợp lệ. Kiểm tra model ID và API key.",
+        detail: data.error?.message || JSON.stringify(data)
+      });
+    }
+
     res.json({
       success: true,
       data: data
@@ -214,22 +242,27 @@ Lưu ý: Chỉ trích dẫn thông tin thực tế từ tài liệu trên để 
   }
 });
 
+// Serve index.html for all non-API routes (SPA support) in production
+if (isProduction) {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(frontendDist, 'index.html'));
+  });
+}
+
 // Import preprocessor and start server after processing PDF
 const preprocessPDF = require('./utils/pdfPreprocessor');
 const { initRAG } = require('./utils/ragHelper');
 
 async function startServer() {
   try {
-    // Run preprocessor on startup (will auto-skip if already cached)
     await preprocessPDF();
-    // Initialize RAG Search Engine
     initRAG();
   } catch (err) {
-    console.error("⚠️ Error preparing RAG on startup:", err);
+    console.error("Error preparing RAG on startup:", err);
   }
 
   app.listen(PORT, () => {
-    console.log(`Backend server is running on http://localhost:${PORT}`);
+    console.log(`Backend server running on http://localhost:${PORT}`);
   });
 }
 

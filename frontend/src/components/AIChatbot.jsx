@@ -59,7 +59,7 @@ export default function AIChatbot() {
       let aiText = '';
       if (isClientKeyConfigured) {
         // Direct Client-Side Call (useful for quick static testing)
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-lite-latest:generateContent?key=${GEMINI_API_KEY}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
