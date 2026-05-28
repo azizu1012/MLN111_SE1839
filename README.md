@@ -1,5 +1,7 @@
 # Dự Án Giáo Dục: Hình Thế Kinh Tế - Xã Hội (Fullstack)
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/azizu1012/MLN111_SE1839)
+
 Dự án này là phiên bản tái tạo hoàn hảo trang chủ học tập về chủ đề **Hình thái Kinh tế - Xã hội** (môn Triết học Mác - Lênin) theo đúng thiết kế, tông màu học thuật đỏ crimson, đen, kem và trắng trong ảnh mẫu.
 
 Dự án được xây dựng với cấu trúc **Fullstack chuyên nghiệp**:
