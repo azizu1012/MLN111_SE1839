@@ -551,20 +551,17 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           font-family: var(--font-heading);
         }
 
-        .intro-overlay-panel {
-          position: absolute;
-          bottom: 8%;
-          left: 5%;
-          right: 5%;
-          z-index: 2;
+        .intro-below-card {
+          margin-top: 20px;
           background: var(--bg-white);
-          border: 2px solid var(--primary-black);
-          padding: 20px 25px;
+          border: 2.5px solid var(--primary-black);
+          padding: 22px 30px;
           display: flex;
           justify-content: space-between;
           align-items: center;
           gap: 20px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 4px 4px 0px var(--primary-black);
+          box-sizing: border-box;
           animation: slideUp 0.5s ease-out;
         }
 
@@ -1033,18 +1030,7 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           <div 
             className="console-screen" 
             style={{ backgroundImage: `url(${activeChapterData.images.title})` }}
-          >
-            <div className="screen-darken" />
-            <div className="intro-overlay-panel">
-              <div className="intro-text-block">
-                <h3>{activeChapterData.title}</h3>
-                <p>{activeChapterData.description}</p>
-              </div>
-              <button type="button" className="btn-console" onClick={startDecision}>
-                BẮT ĐẦU CHƠI
-              </button>
-            </div>
-          </div>
+          />
         )}
 
         {/* ================= SCREEN 2: CHOICE SCREEN (2x2 GRID) ================= */}
@@ -1130,6 +1116,23 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
           </div>
         )}
       </div>
+
+      {/* Intro panel rendered BELOW the image canvas to prevent covering the baked-in intro text */}
+      {gameState === 'intro' && activeChapterData && (
+        <div className="intro-below-card">
+          <div className="intro-text-block" style={{ maxWidth: '75%' }}>
+            <h3 style={{ fontSize: '1.25rem', color: 'var(--primary-red)', fontWeight: '800', margin: '0 0 6px 0', fontFamily: 'var(--font-heading)' }}>
+              {activeChapterData.title}
+            </h3>
+            <p style={{ fontSize: '0.92rem', color: 'var(--text-grey)', margin: 0, lineHeight: 1.4 }}>
+              {activeChapterData.description}
+            </p>
+          </div>
+          <button type="button" className="btn-console" onClick={startDecision} style={{ flexShrink: 0 }}>
+            BẮT ĐẦU CHƠI
+          </button>
+        </div>
+      )}
 
       {/* Visual Novel style Textbox rendered BELOW the image canvas to prevent covering the baked-in result text */}
       {gameState === 'result' && currentChoiceData && coinResult && (
