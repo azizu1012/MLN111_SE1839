@@ -616,62 +616,62 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
 
         .choice-grid {
           position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          height: 33.33%;
+          bottom: 25px;
+          left: 5%;
+          right: 5%;
+          height: 38%;
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-template-rows: 1fr 1fr;
-          gap: 0;
+          gap: 12px;
           z-index: 3;
         }
         .choice-grid-btn {
-          border: none;
-          background: transparent;
+          background: rgba(255, 255, 255, 0.95);
+          border: 2.5px solid var(--primary-black);
+          box-shadow: 4px 4px 0px var(--primary-black);
+          border-radius: 6px;
           cursor: pointer;
-          transition: all 0.2s ease;
+          transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.1);
           display: flex;
-          flex-direction: column;
           align-items: center;
-          justify-content: center;
-          gap: 2px;
-          padding: 4px;
+          padding: 8px 16px;
+          gap: 15px;
           position: relative;
           font-family: var(--font-heading);
-        }
-        .choice-grid-btn .choice-grid-label,
-        .choice-grid-btn .choice-grid-title {
-          display: none;
+          text-align: left;
+          box-sizing: border-box;
         }
         .choice-grid-btn:hover {
-          background: rgba(168,0,0,0.15);
-          box-shadow: inset 0 0 20px rgba(168,0,0,0.1);
+          background: var(--bg-cream);
+          border-color: var(--primary-red);
+          transform: translateY(-2px);
+          box-shadow: 6px 6px 0px var(--primary-red);
         }
-        .choice-grid-btn:hover .choice-grid-label {
-          display: flex;
-        }
-        .choice-grid-btn:hover .choice-grid-title {
-          display: block;
+        .choice-grid-btn:active {
+          transform: translateY(1px);
+          box-shadow: 2px 2px 0px var(--primary-red);
         }
         .choice-grid-label {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           font-weight: 900;
-          background: rgba(168,0,0,0.3);
-          border: 2px solid rgba(255,255,255,0.5);
-          width: 36px;
-          height: 36px;
+          background: var(--primary-red);
+          border: 2px solid var(--primary-black);
+          width: 32px;
+          height: 32px;
           border-radius: 4px;
+          display: flex;
           align-items: center;
           justify-content: center;
           color: #fff;
-          text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+          flex-shrink: 0;
+          box-shadow: 2px 2px 0px var(--primary-black);
         }
         .choice-grid-title {
-          font-size: 0.75rem;
-          color: #fff;
-          font-weight: 700;
-          text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+          font-size: 0.92rem;
+          color: var(--primary-black);
+          font-weight: 800;
+          line-height: 1.25;
         }
 
         .suspense-screen {
@@ -1129,54 +1129,56 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
             }}>
               {coinResult === 'good' ? '★' : '●'}
             </div>
-
-            {/* Visual Novel style Textbox at the bottom of the screen */}
-            <div className="novel-textbox" style={{ zIndex: 10 }}>
-              <div className="novel-textbox-header">
-                <h3 className={`novel-textbox-title ${coinResult}`}>
-                  {coinResult === 'good' ? currentChoiceData.good.title : currentChoiceData.bad.title}
-                </h3>
-              </div>
-              
-              <div className={`novel-textbox-effect ${coinResult}`} style={{ margin: 0 }}>
-                <span>⚖️ <strong>Ảnh hưởng:</strong> {coinResult === 'good' ? currentChoiceData.good.effect : currentChoiceData.bad.effect}</span>
-              </div>
-
-              <div style={{ display: 'flex', gap: '10px', marginTop: '10px', justifyContent: 'flex-end' }}>
-                <button type="button" className="btn-novel-small" onClick={chooseAnother}>
-                  CHỌN LẠI GẦN NHẤT
-                </button>
-                <button type="button" className="btn-novel-small" onClick={resetGame}>
-                  CHỌN CHƯƠNG KHÁC
-                </button>
-                {chapters[currentChapter + 1] && (
-                  <button 
-                    type="button" 
-                    className="btn-novel-small" 
-                    onClick={() => selectChapter(currentChapter + 1)}
-                    style={{
-                      background: 'var(--primary-red)',
-                      color: '#ffffff',
-                      borderColor: 'var(--primary-red)',
-                      fontWeight: '800'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.target.style.background = 'var(--hover-red)';
-                      e.target.style.borderColor = 'var(--hover-red)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.background = 'var(--primary-red)';
-                      e.target.style.borderColor = 'var(--primary-red)';
-                    }}
-                  >
-                    KẾ TIẾP (CHƯƠNG {currentChapter + 1}) &rarr;
-                  </button>
-                )}
-              </div>
-            </div>
           </div>
         )}
       </div>
+
+      {/* Visual Novel style Textbox rendered BELOW the image canvas to prevent covering the baked-in result text */}
+      {gameState === 'result' && currentChoiceData && coinResult && (
+        <div className="novel-textbox" style={{ position: 'static', border: '2px solid var(--primary-black)', borderTop: '2px solid var(--primary-black)', marginTop: '20px', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' }}>
+          <div className="novel-textbox-header">
+            <h3 className={`novel-textbox-title ${coinResult}`}>
+              {coinResult === 'good' ? currentChoiceData.good.title : currentChoiceData.bad.title}
+            </h3>
+          </div>
+          
+          <div className={`novel-textbox-effect ${coinResult}`} style={{ margin: 0 }}>
+            <span>⚖️ <strong>Ảnh hưởng:</strong> {coinResult === 'good' ? currentChoiceData.good.effect : currentChoiceData.bad.effect}</span>
+          </div>
+
+          <div style={{ display: 'flex', gap: '10px', marginTop: '10px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+            <button type="button" className="btn-novel-small" onClick={chooseAnother}>
+              CHỌN LẠI GẦN NHẤT
+            </button>
+            <button type="button" className="btn-novel-small" onClick={resetGame}>
+              CHỌN CHƯƠNG KHÁC
+            </button>
+            {chapters[currentChapter + 1] && (
+              <button 
+                type="button" 
+                className="btn-novel-small" 
+                onClick={() => selectChapter(currentChapter + 1)}
+                style={{
+                  background: 'var(--primary-red)',
+                  color: '#ffffff',
+                  borderColor: 'var(--primary-red)',
+                  fontWeight: '800'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = 'var(--hover-red)';
+                  e.target.style.borderColor = 'var(--hover-red)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'var(--primary-red)';
+                  e.target.style.borderColor = 'var(--primary-red)';
+                }}
+              >
+                KẾ TIẾP (CHƯƠNG {currentChapter + 1}) &rarr;
+              </button>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Info & History panel below the console board */}
       <div className="console-footer-instructions">
