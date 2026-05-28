@@ -1095,6 +1095,8 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
               backgroundImage: `url(${coinResult === 'good' ? currentChoiceData.good.image : currentChoiceData.bad.image})` 
             }}
           >
+            <div className="screen-darken" />
+            
             {/* Badge telling result */}
             <span 
               className={`outcome-badge ${coinResult}`} 
@@ -1106,11 +1108,11 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
             {/* Coin result visual */}
             <div style={{
               position: 'absolute',
-              top: '28px',
-              left: '220px',
+              top: '20px',
+              left: '200px',
               zIndex: 5,
-              width: '44px',
-              height: '44px',
+              width: '40px',
+              height: '40px',
               borderRadius: '50%',
               background: coinResult === 'good'
                 ? 'radial-gradient(circle at 35% 35%, #fff, #10b981)'
@@ -1119,7 +1121,7 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '1.1rem',
+              fontSize: '1rem',
               fontWeight: '900',
               color: coinResult === 'good' ? '#065f46' : '#7f1d1d',
               fontFamily: 'var(--font-heading)',
@@ -1127,22 +1129,25 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
             }}>
               {coinResult === 'good' ? '★' : '●'}
             </div>
-          </div>
-        )}
 
-        {/* Result details below the image */}
-        {gameState === 'result' && currentChoiceData && coinResult && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '0 20px 20px' }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
+            {/* Visual Novel style Textbox at the bottom of the screen */}
+            <div className="novel-textbox" style={{ zIndex: 10 }}>
+              <div className="novel-textbox-header">
+                <h3 className={`novel-textbox-title ${coinResult}`}>
+                  {coinResult === 'good' ? currentChoiceData.good.title : currentChoiceData.bad.title}
+                </h3>
+              </div>
+              
               <div className={`novel-textbox-effect ${coinResult}`} style={{ margin: 0 }}>
                 <span>⚖️ <strong>Ảnh hưởng:</strong> {coinResult === 'good' ? currentChoiceData.good.effect : currentChoiceData.bad.effect}</span>
               </div>
-              <div style={{ display: 'flex', gap: '6px', marginLeft: 'auto' }}>
+
+              <div style={{ display: 'flex', gap: '10px', marginTop: '10px', justifyContent: 'flex-end' }}>
                 <button type="button" className="btn-novel-small" onClick={chooseAnother}>
-                  CHỌN LẠI
+                  CHỌN LẠI GẦN NHẤT
                 </button>
                 <button type="button" className="btn-novel-small" onClick={resetGame}>
-                  CHƠI LẠI
+                  CHỌN CHƯƠNG KHÁC
                 </button>
                 {chapters[currentChapter + 1] && (
                   <button 
@@ -1164,14 +1169,13 @@ export default function GamePage({ sectionName, onBack, onOpenGift }) {
                       e.target.style.borderColor = 'var(--primary-red)';
                     }}
                   >
-                    KẾ TIẾP &rarr;
+                    KẾ TIẾP (CHƯƠNG {currentChapter + 1}) &rarr;
                   </button>
                 )}
               </div>
             </div>
           </div>
         )}
-
       </div>
 
       {/* Info & History panel below the console board */}

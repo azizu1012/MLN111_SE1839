@@ -34,7 +34,7 @@ export default function App() {
       })
       .catch((err) => {
         console.error(err);
-        setError('Không kết nối được tới server backend. Hãy đảm bảo server Node.js đang chạy trên cổng 5000!');
+        setError('Không kết nối được tới server backend. Hãy đảm bảo server Node.js đang chạy trên cổng 5001!');
         setLoading(false);
       });
   }, []);
